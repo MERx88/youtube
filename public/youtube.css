@@ -1,0 +1,46 @@
+
+
+
+
+/* =====Headmenu===== */
+
+/* =====Sidemenu===== */
+
+/* =====OpenSidemenu===== */
+
+/* =====Content===== */
+
+
+.contentInformationProfileImg{
+    height: 40px;
+    border-radius: 100%;
+}
+
+.mouseOverMenuImg{
+    font-size: 20px;
+    color: rgb(237, 237, 237);
+    position: absolute;
+    top:2px;
+    right: 8px;
+}
+
+
+/* =====mediaquery===== */
+
+@media (max-width: 660px){
+    #searchContainer{
+        border: none;
+    }
+    
+    #searchInput{
+        display: none;
+    }
+    
+    #searchBtn{
+        width: 40px;
+        border: none;
+        border-radius: 50%;
+        background-color: #6d6d6d;
+    }
+}
+
