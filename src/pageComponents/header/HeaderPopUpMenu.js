@@ -1,11 +1,7 @@
 import React from "react"
 import styled,{ css }  from "styled-components"
 
-// import ImgBtn from "../../components/ImgBtn"
-
-// import {useWide} from "../../styles/useMedia"
 import {useRecoilValue} from "recoil"
-// import {sideMenuOpenState} from "../../recoil/HeaderNavState"
 import {popUpMenuState} from "../../recoil/HomeState"
 
 import ImgTextBtn from "../../components/ImgTextBtn"
@@ -17,7 +13,8 @@ import {P} from "../../styles/P"
 const PopUpMenuContainer = styled.div`
     width: 100%;
     height :0px;
-    position : relative;
+    position : fixed;
+    z-index: 2;
 `
 const PopUpMenu= styled.div`
     position : absolute;
@@ -26,7 +23,6 @@ const PopUpMenu= styled.div`
     display :flex;
     flex-direction :column;
     align-items: center;
-    z-index: 2;
 
     ${(p) => p.popUpMenuStyle}
 `

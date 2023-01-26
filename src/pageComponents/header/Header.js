@@ -4,57 +4,20 @@ import styled from "styled-components"
 import ImgBtn from "../../components/ImgBtn"
 import HeaderPopUpMenu from "./HeaderPopUpMenu"
 
-import {useMaxNarrow} from "../../styles/useMedia"
-import {useRecoilState, useSetRecoilState} from "recoil"
+import {useMaxNarrow} from "../../hooks/useMedia"
+import {useRecoilState} from "recoil"
 import {sideMenuOpenState} from "../../recoil/HeaderNavState"
 import {videoState, popUpMenuState} from "../../recoil/HomeState"
+import {Div,CusorDiv} from "../../styles/Div"
+import {Input} from "../../styles/Input"
 
 
-const HeadMenu = styled.header`
-    width: 100%;
-    height:70px;
-    position: fixed;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #181818;
+const HeaderDiv = styled(Div)`
     z-index: 1;
 `
-const HeadMenuBtnSection = styled.section`
-    width: 200px;
-    height: auto;
-    padding-left: 13px;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+
+const HeadMenuBtnDiv = styled(Div)`
     z-index: 2;
-`
-const SearchSection = styled.section`
-    width:50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-`
-const SearchContainer = styled.div`
-    width: 80%;
-    height: 40px;
-    border: ${(props) => props.media ? `1px solid #3d3d3d` : `none`};
-    border-radius: 50px;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-`
-const SearchInput = styled.input`
-    width:80%;
-    height:25px;
-    margin-right: 12%;
-    color: white;
-    font-size: 15px;
-    border: none;
-    background-color: #181818;
-    ${(props) => props.media ? `null` :`display : none;`};
 `
 const Header=()=>{
     //mediaquery
@@ -115,7 +78,6 @@ const Header=()=>{
         }
     ]
     //state
-
     const [sideMenuOpenValue, setSideMenuOpenState]=useRecoilState(sideMenuOpenState)
     const [isVideoValue, setIsVideoState]=useRecoilState(videoState)
     const [popUpMenuValue, setPopUpMenuState]=useRecoilState(popUpMenuState)
@@ -160,26 +122,26 @@ const Header=()=>{
         <React.Fragment>
         <HeaderPopUpMenu headmenuPopUpMenuData={headmenuPopUpMenuData}>
         </HeaderPopUpMenu>
-        <HeadMenu onClick={headMenuBtnEvent}>
-            <HeadMenuBtnSection>
+        <HeaderDiv width="100%" height="70px" background_color="#181818" position="fixed" flex_style="flexSpaceBetween">
+            <HeadMenuBtnDiv width="200px" margin_left="13px" flex_style="flexSpaceAround">
                 <ImgBtn position="HeadMenu" imgPosition="HeadMenu" data={headmenuData[0]}/>
                 <ImgBtn position="HeadLogo" imgPosition="HeadLogo" data={headmenuData[1]}/>
-            </HeadMenuBtnSection>
+            </HeadMenuBtnDiv>
             
-            <SearchSection>
-                <SearchContainer media={isMaxNarrow}>
-                    <SearchInput media={isMaxNarrow} type="text" placeholder="검색" id="searchInput"/>
+            <Div width="50%" flex_style="flexCenter">
+                <Div width="80%" height="40px" border="1px solid #3d3d3d" border_radius="50px" position="relative" flex_style="flexCenter">
+                    <Input width="80%" height="25px" margin_right="12%" color="white" font_size="15px" background_color="#181818" type="text" placeholder="검색"/>
                     <ImgBtn position={isMaxNarrow ? "HeadSearchMenu":"HeadMenu"} imgPosition="HeadMenu"  data={headmenuData[2]}/>
-                </SearchContainer>
+                </Div>
                 <ImgBtn position="HeadMicMenu" imgPosition="HeadMenu"  data={headmenuData[3]}/>
-            </SearchSection>
+            </Div>
         
-            <HeadMenuBtnSection>
+            <HeadMenuBtnDiv width="200px" flex_style="flexSpaceAround">
                 <ImgBtn position="HeadMenu" imgPosition="HeadMenu"  data={headmenuData[4]}/>
                 <ImgBtn position="HeadMenu" imgPosition="HeadMenu"  data={headmenuData[5]}/>
                 <ImgBtn position="ProfileMenu" imgPosition="ProfileMenu"  data={headmenuData[6]}/>
-            </HeadMenuBtnSection>
-        </HeadMenu>
+            </HeadMenuBtnDiv>
+        </HeaderDiv>
         </React.Fragment>
     )
 }

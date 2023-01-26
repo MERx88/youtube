@@ -6,7 +6,7 @@ import ImgTextBtn from "../../components/ImgTextBtn"
 import {P} from "../../styles/P"
 import {CircleImg} from "../../styles/Img"
 
-import {useMaxWide, useWide, useNomal, useNarrow, useMaxNarrow} from "../../styles/useMedia"
+import {useMaxWide, useWide, useNomal, useNarrow, useMaxNarrow} from "../../hooks/useMedia"
 
 import {VideoDataState, VideoBtnDataState } from "../../recoil/VideoState"
 import {useRecoilValue} from "recoil"

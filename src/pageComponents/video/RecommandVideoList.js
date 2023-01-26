@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 import RecommandVideo from "./RecommandVideo"
 import TextBtn from "../../components/TextBtn"
-import {useNomal} from "../../styles/useMedia"
+import {useNomal} from "../../hooks/useMedia"
 
 import {RecommandVideoDataState } from "../../recoil/VideoState"
 import {useRecoilValue} from "recoil"

@@ -16,6 +16,7 @@ const ContentContainer = styled.div`
     flex-grow: 1;
     display: flex;
     justify-content: center;
+    max-width :350px;
     position: relative;
     cursor: pointer;
 `

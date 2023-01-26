@@ -5,7 +5,6 @@ import Main from "./pageComponents/Main"
 import Header from "./pageComponents/header/Header"
 
 import GlobalStyle from "./styles/GlobalStyle"
-import Video from "./pageComponents/video/Video"
 
 const App=()=>{
 

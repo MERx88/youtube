@@ -6,9 +6,8 @@ import CommentWrite from "./CommentWrite"
 
 import ImgTextBtn from "../../components/ImgTextBtn"
 import {H1} from "../../styles/H1"
-import {CircleImg} from "../../styles/Img"
 
-import {VideoDataState, CommentDataState, VideoBtnDataState} from "../../recoil/VideoState"
+import {CommentDataState, VideoBtnDataState} from "../../recoil/VideoState"
 import {useRecoilValue} from "recoil"
 
 const CommentListContainer = styled.aside`

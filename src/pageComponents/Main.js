@@ -7,7 +7,7 @@ import Subscribe from "./main/Subscribe"
 import Storage from "./main/Storage"
 import Video from "./video/Video"
 
-import {useNarrow} from "../styles/useMedia"
+import {useNarrow} from "../hooks/useMedia"
 
 import {useRecoilValue} from "recoil"
 import {mainState} from "../recoil/HeaderNavState"

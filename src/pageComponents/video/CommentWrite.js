@@ -44,7 +44,7 @@ const CommentClickBeforeP = styled.p`
     align-items: center;
 `
 const CommentBtnContainer = styled.div`
-    width:95%;
+    width:92%;
     height: 40px;
     margin-left : 60px;
     display: flex;

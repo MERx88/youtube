@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 
-import {useNarrow} from "../../styles/useMedia"
+import {useNarrow} from "../../hooks/useMedia"
 import ImgTextBtn from "../../components/ImgTextBtn"
 
 import {videoState} from "../../recoil/HomeState"

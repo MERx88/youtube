@@ -10,7 +10,7 @@ import ImgTextBtn from "../../components/ImgTextBtn"
 import {H1} from "../../styles/H1"
 import {P} from "../../styles/P"
 import {CircleImg} from "../../styles/Img"
-import {useNomal} from "../../styles/useMedia"
+import {useNomal} from "../../hooks/useMedia"
 
 import {VideoDataState, CommentDataState, RecommandVideoDataState, VideoBtnDataState } from "../../recoil/VideoState"
 import {useSetRecoilState} from "recoil"
