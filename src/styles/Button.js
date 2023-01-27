@@ -19,4 +19,6 @@ export const Button = styled.button`
     &:hover {
         background-color: ${(props) => props.hover_background_color || `none`};
     }
+
+    ${(props) => props.btnStyle}
 `

@@ -1,23 +1,16 @@
-
 import React from "react"
 
 import styled, { css } from "styled-components"
 
 import {Button} from "../styles/Button"
+import {Img} from "../styles/Img"
 
-const ImgButton = styled.button`
 
-    ${(p) => p.positionStyle}
+const BTN_STYLE= {
 
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-`
+//======Header Button======//
 
-const POSITIONS = {
-    HeadMenu : css`
+    headerBtn : css`
         width: 45px;
         height: 45px;
         border-radius: 50%;
@@ -25,14 +18,9 @@ const POSITIONS = {
 
         &:hover {
             background-color: #3d3d3d;
-          }
+        }
     `,
-    HeadLogo : css`
-        height: 100%;
-        margin-left: 15px;
-        background-color: #181818;
-    `,
-    HeadSearchMenu : css`
+    headerSearchBtn : css`
         width: 80px;
         height: 40px;
         right: 0px;
@@ -40,7 +28,7 @@ const POSITIONS = {
         position: absolute;
         background-color: #3d3d3d;
     `,
-    HeadMicMenu : css`
+    headerMicBtn : css`
         width: 45px;
         height: 45px;
         margin-left: 10px;
@@ -49,9 +37,13 @@ const POSITIONS = {
 
         &:hover {
             background-color: #6d6d6d;
-          }
+        }
     `,
-    HeadPopUpMenu : css`
+
+//======Header Popup Menu Button======//
+
+
+    headerPopUpBtn : css`
         width: 45px;
         height: 45px;
         border-radius: 50%;
@@ -59,84 +51,120 @@ const POSITIONS = {
 
         &:hover {
             background-color: #6d6d6d;
-          }
+        }
     `,
-    HeadPopUpMicMenu : css`
-        width: 100px;
-        height: 100px;
-        margin-left: 10px;
-        border-radius: 50%;
-        background-color: #6d6d6d;
-    `,
-    ProfileMenu : css`
+    headerPopUpMicBtn : css`
         width: 45px;
         height: 45px;
         border-radius: 50%;
+        background-color: #3d3d3d;
+
+        &:hover {
+            background-color: #6d6d6d;
+        }
     `,
-    VideoMenu : css`
+
+//======Video Menu Button======//
+
+    videoMenuBtn : css`
         width:40px;
         height: 40px;
         border-radius: 50%;
         background-color: #3d3d3d;
     `,
-    CommentMenu : css`
+
+
+//======Comment Menu Button======//
+
+    commentMenuBtn : css`
         width:25px;
         height: 25px;
         background-color: #181818;
     `,
-};
 
-// ========================================== //
+}
 
-const ButtonImg = styled.img`
+const IMG_STYLE= {
 
-    ${(p) => p.imgPositionStyle}
-
-    pointer-events: none;
-`
-const IMG_POSITIONS = {
-    HeadMenu : css`
-        height: 19px;
-    `,
-    HeadLogo : css`
-        height: 25px;
-    `,
-    HeadPopUpMenu : css`
-        height: 19px;
-    `,
-    HeadPopUpMicMenu : css`
-        height: 50px;
-    `,
-    ProfileMenu : css`
-        height: 45px;
-        border-radius: 50%;
-    `,
-    VideoMenu : css`
+    extraSmallImg : css`
         height: 15px;
     `,
-    CommentMenu : css`
-        height: 18px;
+    smallImg : css`
+        height: 17px;
     `,
+    mediumImg : css`
+        height: 19px;
+    `,
+    largeImg : css`
+        height: 45px;
+    `,
+    extraLargeImg : css`
+        height: 50px;
+    `,
+
+//======CircleImg======//
+
+    extraSmallCircleImg : css`
+        border-radius: 50%;
+        height: 15px;
+    `,
+    smallCircleImg : css`
+        border-radius: 50%;
+        height: 17px;
+    `,
+    mediumCircleImg : css`
+        border-radius: 50%;
+        height: 19px;
+    `,
+    largeCircleImg : css`
+        border-radius: 50%; 
+        height: 45px;
+    `,
+    extraLargeCircleImg: css`
+        border-radius: 50%; 
+        height: 50px;
+    `
 };
+
 
 // ========================================== //
 
-const ImgBtn=(props)=>{
-
-    const {position, imgPosition, data} = props
-
-    const positionStyle = POSITIONS[position];
-
-    const imgPositionStyle = IMG_POSITIONS[imgPosition];
-
+const TestBtn=(props)=>{
+    const {btn_style, img_style, data} = props
+    const btnStyle = BTN_STYLE[btn_style];
+    const imgStyle = IMG_STYLE[img_style];
  	return(
-        <ImgButton id={data?.id} positionStyle={positionStyle}>
-             <ButtonImg imgPositionStyle={imgPositionStyle} src={data?.img}/> 
-        </ImgButton>
+        <Button btnStyle={btnStyle}>
+            <Img imgStyle={imgStyle} src={data.img}/>
+        </Button>
 	)
 }
 
-export default ImgBtn
+export default TestBtn
 
 
   
+// const IMG_POSITIONS = {
+//     HeadMenu : css`
+//         height: 19px;
+//     `,
+//     HeadLogo : css`
+//         height: 25px;
+//     `,
+//     HeadPopUpMenu : css`
+//         height: 19px;
+//     `,
+//     HeadPopUpMicMenu : css`
+//         height: 50px;
+//     `,
+//     ProfileMenu : css`
+//         height: 45px;
+//         border-radius: 50%;
+//     `,
+//     VideoMenu : css`
+//         height: 15px;
+//     `,
+//     CommentMenu : css`
+//         height: 18px;
+//     `,
+// };

@@ -14,6 +14,7 @@ import {videoState, popUpMenuState} from "../../recoil/HomeState"
 //import style 
 import {Div} from "../../styles/Div"
 import {Input} from "../../styles/Input"
+import {Img} from "../../styles/Img"
 import {useMaxNarrow} from "../../hooks/useMedia"
 
 //======style======//
@@ -131,22 +132,22 @@ const Header=()=>{
         </HeaderPopUpMenu>
         <HeaderDiv width="100%" height="70px" background_color="#181818" position="fixed" flex_style="flexSpaceBetween" onClick={headMenuBtnEvent}>
             <HeadMenuBtnContainerDiv width="200px" margin_left="13px" flex_style="flexSpaceAround">
-                <TestBtn data={headerIconData[0]} width="45px" height="45px" border_radius="50%" background_color="#181818" hover_background_color="#3d3d3d" />
-                <ImgBtn position="HeadLogo" imgPosition="HeadLogo" data={headerIconData[1]}/>
+                <TestBtn btn_style="headerBtn" img_style="mediumImg" data={headerIconData[0]}/>
+                <Img height="27px" margin_left="15px" background_color="#181818" src={headerIconData[1].img}/>
             </HeadMenuBtnContainerDiv>
             
             <Div width="50%" flex_style="flexCenter">
                 <Div width="80%" height="40px" border="1px solid #3d3d3d" border_radius="50px" position="relative" flex_style="flexCenter">
                     <Input width="80%" height="25px" margin_right="12%" color="white" font_size="15px" background_color="#181818" type="text" placeholder="검색"/>
-                    <ImgBtn position={isMaxNarrow ? "HeadSearchMenu":"HeadMenu"} imgPosition="HeadMenu"  data={headerIconData[2]}/>
+                    <TestBtn btn_style="headerSearchBtn" img_style="mediumImg" data={headerIconData[2]} />
                 </Div>
-                <ImgBtn position="HeadMicMenu" imgPosition="HeadMenu"  data={headerIconData[3]}/>
+                <TestBtn btn_style="headerMicBtn" img_style="mediumImg" data={headerIconData[3]} />
             </Div>
         
             <HeadMenuBtnContainerDiv width="200px" flex_style="flexSpaceAround">
-                <TestBtn data={headerIconData[4]} width="45px" height="45px" border_radius="50%" background_color="#181818" hover_background_color="#3d3d3d"  />
-                <TestBtn data={headerIconData[5]} width="45px" height="45px" border_radius="50%" background_color="#181818" hover_background_color="#3d3d3d"  />
-                <ImgBtn position="ProfileMenu" imgPosition="ProfileMenu"  data={headerIconData[6]}/>
+                <TestBtn btn_style="headerBtn" img_style="mediumImg" data={headerIconData[4]} />
+                <TestBtn btn_style="headerBtn" img_style="mediumImg" data={headerIconData[5]}/>
+                <TestBtn btn_style="headerBtn" img_style="largeCircleImg" data={headerIconData[6]} />
             </HeadMenuBtnContainerDiv>
         </HeaderDiv>
         </React.Fragment>
