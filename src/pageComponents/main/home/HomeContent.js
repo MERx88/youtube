@@ -1,75 +1,38 @@
 import React from "react"
 import styled, { css } from "styled-components"
+import {useRecoilValue, useRecoilState} from "recoil"
 
+//import component
 import ImgTextBtn from "../../../components/ImgTextBtn"
 
-import {useRecoilValue, useRecoilState} from "recoil"
-import {ContentDataState} from "../../../recoil/HeaderNavState"
+//import recoil state 
+import {ContentDataState} from "../../../recoil/HomeState"
 import {videoState} from "../../../recoil/HomeState"
 
+//import style 
+import {Div,CusorDiv,NoneEventsDiv} from "../../../styles/Div"
+import {Img, CircleImg} from "../../../styles/Img"
 import {H1} from "../../../styles/H1"
 import {P} from "../../../styles/P"
 
-const ContentContainer = styled.div`
-    margin-bottom: 30px;
+//======style======//
+
+const ContentContainerDiv = styled(CusorDiv)`
     flex-basis: 250px;
     flex-grow: 1;
-    display: flex;
-    justify-content: center;
     max-width :350px;
-    position: relative;
-    cursor: pointer;
 `
-const ContentThumbnailImgContainer = styled.div`
-    width: 100%;
-    position:relative;
-    pointer-events: none;
-`
-const ContentThumbnailImg = styled.img`
-    width: 100%;
-    height: auto;
-    border-radius: 25px 25px 25px 25px;
-`
-const ContentInfoContainer = styled.div`
-    width: 100%;
-    margin-top :8px;
-    display: flex;
-    flex-direction: row;
-    position: relative;
-    pointer-events: none;
-`
-const ContentInfoTxt = styled.article`
-    width: 70%;
-    margin-left: 10px;
-`
-const ContentInfoDetailTxt = styled.div`
-    width: 120px;
-    margin: 0px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-`
-const MouseOverInfo = styled.div`
-    width: 110px;
-    height: 19px;
-    background-color:#181818;
-    color :white;
-    font-size: 13px;
-    position: absolute;
+
+const MouseOverDiv = styled(NoneEventsDiv)`
     top:83%;
     right: 5px;
-    border-radius: 3px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    pointer-events: none;
 `
 //================================//
 
-const Content = styled.div`
-    ${(p) => p.isExpansionStyle}
+const ContentDiv = styled.div`
+    ${(p) => p.whichContentStyle}
 `
-const CONTENT = {
+const CONTENT_STYLE = {
     Simple : css`
         margin-bottom: 30px;
         flex-basis: 250px;
@@ -79,7 +42,7 @@ const CONTENT = {
     Expansion : css`
         width : 350px;
         height: 350px;
-        background-color:#212121;
+        background-color : #212121;
         margin-top: 0px;
         position: absolute;
         border-radius: 15px;
@@ -88,15 +51,7 @@ const CONTENT = {
     `
 }
 
-//================================//
-
-const ContentExpansionBtnContainer = styled.div`
-    width:100%;
-    height:60px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-`
+//======Component======//
 
 const HomeContent=(props)=>{
     //props
@@ -131,45 +86,51 @@ const HomeContent=(props)=>{
     }
 
     return (
-        <ContentContainer>  
-            <Content isExpansionStyle={CONTENT[isContentExpansion ? "Expansion" : "Simple"]} onMouseOver={contentMouseOverInfoEvent} onMouseOut={contentMouseOverInfoEvent} onClick={contentExpansionEvent}>
-                <ContentThumbnailImgContainer>
-                <ContentThumbnailImg src={contentDataValue[index].contentThumbnail}/>
+        <ContentContainerDiv  margin_bottom="30px" position="relative" flex_style="flexTopCenter">  
+            <ContentDiv whichContentStyle={CONTENT_STYLE[isContentExpansion ? "Expansion" : "Simple"]} onMouseOver={contentMouseOverInfoEvent} onMouseOut={contentMouseOverInfoEvent} onClick={contentExpansionEvent}>
+                <NoneEventsDiv  width="100%" position="relative">
+                <Img width="100%" border_radius="25px" src={contentDataValue[index].contentThumbnail}/>
                 {
                     isMouseOver
-                    ? <MouseOverInfo>클릭하여 재생하기</MouseOverInfo>
-                    : <MouseOverInfo>{contentDataValue[index].contentRuntime}</MouseOverInfo>
+                    ? <MouseOverDiv width="110px" height="19px" background_color="#181818" position="absolute" border_radius="3px" flex_style="flexCenter">
+                            <P font_size="medium" color="#3d3d3d" >
+                                클릭하여 재생하기
+                            </P>
+                      </MouseOverDiv>
+                    : <MouseOverDiv width="110px" height="19px" background_color="#181818" position="absolute" border_radius="3px" flex_style="flexCenter">
+                        {contentDataValue[index].contentRuntime}
+                      </MouseOverDiv>
                 }
-                </ContentThumbnailImgContainer>
+                </NoneEventsDiv>
 
-                <ContentInfoContainer>
-                    <img class="contentInformationProfileImg" src={contentDataValue[index].profileImg}/>
+                <NoneEventsDiv width="100%" margin_top="8px" position="relative">
+                    <CircleImg height="45px" src={contentDataValue[index].profileImg}/>
                     {
                         isMouseOver
                         ? <i class="fa-solid fa-ellipsis-vertical mouseOverMenuImg"></i>
                         : null
                     }
-                    <ContentInfoTxt>
-                        <H1 font_size="17px" >{contentDataValue[index].contentTitle}</H1>
-                        <P color="#3d3d3d" font_size="15px">{contentDataValue[index].channelTitle}</P>
-                        <ContentInfoDetailTxt>
-                            <P color="#3d3d3d" font_size="15px">{contentDataValue[index].contentView}</P>
-                            <P color="#3d3d3d" font_size="15px">{contentDataValue[index].contentUploadDate}</P>
-                        </ContentInfoDetailTxt>
-                    </ContentInfoTxt>
-                </ContentInfoContainer>
+                    <Div width="70%" margin_left="10px" flex_direction="column">
+                        <H1 font_size="small" >{contentDataValue[index].contentTitle}</H1>
+                        <P font_size="medium" color="#3d3d3d">{contentDataValue[index].channelTitle}</P>
+                        <Div width="120px" flex_style="flexSpaceBetween">
+                            <P font_size="medium" color="#3d3d3d">{contentDataValue[index].contentView}</P>
+                            <P font_size="medium" color="#3d3d3d">{contentDataValue[index].contentUploadDate}</P>
+                        </Div>
+                    </Div>
+                </NoneEventsDiv>
                 {
                     isContentExpansion
                     ?
-                    <ContentExpansionBtnContainer onClick={contentExpansionBtnEvent}>
+                    <Div width="100%" height="60px" flex_style="flexSpaceAround" onClick={contentExpansionBtnEvent}>
                         <ImgTextBtn position="HomeContentExpansion" imgPosition="HomeContentExpansion" pPosition="HomeContentExpansion" data={contentExpansionBtnData[0]}/>
                         <ImgTextBtn position="HomeContentExpansion" imgPosition="HomeContentExpansion" pPosition="HomeContentExpansion" data={contentExpansionBtnData[1]}/>
-                    </ContentExpansionBtnContainer>
+                    </Div>
                     :
                     null
                 }
-            </Content>
-        </ContentContainer>
+            </ContentDiv>
+        </ContentContainerDiv>
     )
 }
 

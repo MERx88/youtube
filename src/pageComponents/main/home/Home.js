@@ -1,19 +1,24 @@
 import React from "react"
 import styled from "styled-components"
-
 import {useEffect} from "react"
-
-import HomeContent from "./HomeContent"
-
-import {ContentDataState} from "../../../recoil/HeaderNavState"
-
 import {useRecoilState} from "recoil"
 
-const Contents = styled.section`
-    display: flex;
+//import component
+import HomeContent from "./HomeContent"
+
+//import recoil state 
+import {ContentDataState} from "../../../recoil/HomeState"
+
+//import style 
+import {Div} from "../../../styles/Div"
+
+//======style======//
+
+const ContentsDiv = styled(Div)`
     flex-wrap: wrap;
     gap: 15px; 
 `
+//======Component======//
 
 const Home=()=>{
     //data
@@ -127,13 +132,13 @@ const Home=()=>{
     },[])
     
     return (
-        <Contents>
+        <ContentsDiv>
             {
                 contentDataValue.map((data, index)=>{
                 return <HomeContent key={data} index={index} contentExpansionBtnData={contentExpansionBtnData}/>
                 })
             } 
-        </Contents>
+        </ContentsDiv>
     )
 }
 

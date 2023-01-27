@@ -1,29 +1,36 @@
 import React from "react"
 import styled from "styled-components"
+import {useRecoilState} from "recoil"
 
+//import component
 import ImgBtn from "../../components/ImgBtn"
+import TestBtn from "../../components/testBtn"
 import HeaderPopUpMenu from "./HeaderPopUpMenu"
 
-import {useMaxNarrow} from "../../hooks/useMedia"
-import {useRecoilState} from "recoil"
+//import recoil state 
 import {sideMenuOpenState} from "../../recoil/HeaderNavState"
 import {videoState, popUpMenuState} from "../../recoil/HomeState"
-import {Div,CusorDiv} from "../../styles/Div"
-import {Input} from "../../styles/Input"
 
+//import style 
+import {Div} from "../../styles/Div"
+import {Input} from "../../styles/Input"
+import {useMaxNarrow} from "../../hooks/useMedia"
+
+//======style======//
 
 const HeaderDiv = styled(Div)`
     z-index: 1;
 `
-
-const HeadMenuBtnDiv = styled(Div)`
+const HeadMenuBtnContainerDiv = styled(Div)`
     z-index: 2;
 `
+//======Component======//
+
 const Header=()=>{
     //mediaquery
     let isMaxNarrow=useMaxNarrow()
     //data
-    const headmenuData=[
+    const headerIconData=[
         {   "id":"0",
             "img":"/img/menu.png",
         },
@@ -47,7 +54,7 @@ const Header=()=>{
         }
     ]
 
-    const headmenuPopUpMenuData=[
+    const headerPopUpIconData=[
         {   "id":"0",
             "img":"/img/cross.png",
         },
@@ -85,9 +92,9 @@ const Header=()=>{
     const isSideMenuOpen=()=>{
         sideMenuOpenValue ? setSideMenuOpenState(false) : setSideMenuOpenState(true) 
     }
-    const videoPageMoveEvent=()=>{
-        isVideoValue ? setIsVideoState(false) :  setIsVideoState(true)
-    }
+    // const videoPageMoveEvent=()=>{
+    //     isVideoValue ? setIsVideoState(false) :  setIsVideoState(true)
+    // }
     
     //event
     const headMenuBtnEvent=()=>{
@@ -99,7 +106,7 @@ const Header=()=>{
                 isSideMenuOpen()
                 break
             case "1":
-                videoPageMoveEvent()
+                // videoPageMoveEvent()
                 break
             case "2":
                 break
@@ -120,27 +127,27 @@ const Header=()=>{
 
     return (
         <React.Fragment>
-        <HeaderPopUpMenu headmenuPopUpMenuData={headmenuPopUpMenuData}>
+        <HeaderPopUpMenu headerPopUpIconData={headerPopUpIconData}>
         </HeaderPopUpMenu>
-        <HeaderDiv width="100%" height="70px" background_color="#181818" position="fixed" flex_style="flexSpaceBetween">
-            <HeadMenuBtnDiv width="200px" margin_left="13px" flex_style="flexSpaceAround">
-                <ImgBtn position="HeadMenu" imgPosition="HeadMenu" data={headmenuData[0]}/>
-                <ImgBtn position="HeadLogo" imgPosition="HeadLogo" data={headmenuData[1]}/>
-            </HeadMenuBtnDiv>
+        <HeaderDiv width="100%" height="70px" background_color="#181818" position="fixed" flex_style="flexSpaceBetween" onClick={headMenuBtnEvent}>
+            <HeadMenuBtnContainerDiv width="200px" margin_left="13px" flex_style="flexSpaceAround">
+                <TestBtn data={headerIconData[0]} width="45px" height="45px" border_radius="50%" background_color="#181818" hover_background_color="#3d3d3d" />
+                <ImgBtn position="HeadLogo" imgPosition="HeadLogo" data={headerIconData[1]}/>
+            </HeadMenuBtnContainerDiv>
             
             <Div width="50%" flex_style="flexCenter">
                 <Div width="80%" height="40px" border="1px solid #3d3d3d" border_radius="50px" position="relative" flex_style="flexCenter">
                     <Input width="80%" height="25px" margin_right="12%" color="white" font_size="15px" background_color="#181818" type="text" placeholder="검색"/>
-                    <ImgBtn position={isMaxNarrow ? "HeadSearchMenu":"HeadMenu"} imgPosition="HeadMenu"  data={headmenuData[2]}/>
+                    <ImgBtn position={isMaxNarrow ? "HeadSearchMenu":"HeadMenu"} imgPosition="HeadMenu"  data={headerIconData[2]}/>
                 </Div>
-                <ImgBtn position="HeadMicMenu" imgPosition="HeadMenu"  data={headmenuData[3]}/>
+                <ImgBtn position="HeadMicMenu" imgPosition="HeadMenu"  data={headerIconData[3]}/>
             </Div>
         
-            <HeadMenuBtnDiv width="200px" flex_style="flexSpaceAround">
-                <ImgBtn position="HeadMenu" imgPosition="HeadMenu"  data={headmenuData[4]}/>
-                <ImgBtn position="HeadMenu" imgPosition="HeadMenu"  data={headmenuData[5]}/>
-                <ImgBtn position="ProfileMenu" imgPosition="ProfileMenu"  data={headmenuData[6]}/>
-            </HeadMenuBtnDiv>
+            <HeadMenuBtnContainerDiv width="200px" flex_style="flexSpaceAround">
+                <TestBtn data={headerIconData[4]} width="45px" height="45px" border_radius="50%" background_color="#181818" hover_background_color="#3d3d3d"  />
+                <TestBtn data={headerIconData[5]} width="45px" height="45px" border_radius="50%" background_color="#181818" hover_background_color="#3d3d3d"  />
+                <ImgBtn position="ProfileMenu" imgPosition="ProfileMenu"  data={headerIconData[6]}/>
+            </HeadMenuBtnContainerDiv>
         </HeaderDiv>
         </React.Fragment>
     )

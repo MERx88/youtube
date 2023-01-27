@@ -3,6 +3,8 @@ import React from "react"
 
 import styled, { css } from "styled-components"
 
+import {Button} from "../styles/Button"
+
 const ImgButton = styled.button`
 
     ${(p) => p.positionStyle}

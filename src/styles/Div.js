@@ -14,7 +14,7 @@ export const Div = styled.div`
     position: ${(props) => props.position|| `static`};
     background-color: ${(props) => props.background_color || `none`};
 
-    ${(props) => FLEXSTYLE[props.flex_style] || FLEXSTYLE[flexCenter]}
+    ${(props) => FLEX_STYLE[props.flex_style] || "none"}
 `
 
 export const CusorDiv = styled(Div)`
@@ -23,10 +23,12 @@ export const CusorDiv = styled(Div)`
         background-color: ${(props) => props.hover_background_color || `none`};
     }
 `
-
+export const NoneEventsDiv = styled(Div)`
+    pointer-events: none;
+`
 //======flex style======//
 
-const FLEXSTYLE = {
+const FLEX_STYLE = {
     flexCenter : css`
         align-items: center;
         justify-content: center;

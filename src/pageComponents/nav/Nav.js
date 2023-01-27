@@ -1,39 +1,31 @@
 import React from "react"
 import styled from "styled-components"
+import {useRecoilValue, useSetRecoilState, useRecoilState} from "recoil"
 
-import {useNarrow} from "../../hooks/useMedia"
+//import component
 import ImgTextBtn from "../../components/ImgTextBtn"
 
+//import recoil state 
 import {videoState} from "../../recoil/HomeState"
-
-import {useRecoilValue, useSetRecoilState, useRecoilState} from "recoil"
 import {BtnDataState, sideMenuOpenState, mainState} from "../../recoil/HeaderNavState"
 
-const SideMenuSimple = styled.nav`
-    width: 80px;
-    margin-top: 70px;
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    background-color: #181818;
-`
-const SideMenuDetail = styled.nav`
-    width: 240px;
-    height: 1500px;
-    margin-top: 83px;
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    background-color: #181818;
+//import style 
+import {Div} from "../../styles/Div"
+import {useNarrow} from "../../hooks/useMedia"
+
+//======style======//
+
+const navDetailDiv = styled(Div)`
     overflow-y: scroll;
     z-index: 2;
 `
+//======Component======//
 
 const Nav=()=>{
     //mediaquery
     let isNarrow=useNarrow()
     //data
-    const sidemenuData=[
+    const navIconData=[
         {   "id":"0",
             "img":"/img/sideMenuIcon0.png",
             "txt":"홈",
@@ -88,13 +80,13 @@ const Nav=()=>{
     return (
         sideMenuOpenValue
         ?
-            <SideMenuDetail onClick={sideMenuBtnEvent}>
+            <navDetailDiv width="240px" height="1500px" margin_top="83px" flex_direction="column" position="fixed" background_color="#181818" onClick={sideMenuBtnEvent}>
             {
-                sidemenuData.map((value)=>{
+                navIconData.map((value)=>{
                     return <ImgTextBtn position="SideMenuDetail" imgPosition="SideMenuDetail" pPosition="SideMenuDetail" data={value}/>
                 })
             }  
-            </SideMenuDetail>
+            </navDetailDiv>
         :
             isNarrow
             &&
@@ -103,14 +95,14 @@ const Nav=()=>{
                 ?
                 null
                 :
-                <SideMenuSimple onClick={sideMenuBtnEvent}>
+                <Div width="80px" margin_top="70px" flex_direction="column" position="fixed" background_color="#181818" onClick={sideMenuBtnEvent}>
                     {
-                        sidemenuData.map((value)=>{
+                        navIconData.map((value)=>{
                             return <ImgTextBtn position="SideMenuSimple" imgPosition="SideMenuSimple" pPosition="SideMenuSimple" data={value}/>
                             
                         })
                     }  
-                </SideMenuSimple>
+                </Div>
                 )
     )
 }

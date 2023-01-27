@@ -1,24 +1,30 @@
 import React from "react"
 import styled from "styled-components"
+import {useRecoilValue} from "recoil"
 
+//import component
 import Home from "./main/home/Home"
 import Shorts from "./main/Shorts"
 import Subscribe from "./main/Subscribe"
 import Storage from "./main/Storage"
-import Video from "./video/Video"
+// import Video from "./video/Video"
 
-import {useNarrow} from "../hooks/useMedia"
-
-import {useRecoilValue} from "recoil"
+//import recoil state 
 import {mainState} from "../recoil/HeaderNavState"
 import {videoState} from "../recoil/HomeState"
 
-const  MainContainer= styled.main`
+//import style 
+import {useNarrow} from "../hooks/useMedia"
+
+//======style======//
+
+const  ContainerMain= styled.main`
     max-width: 100%;
     padding-top: 140px;
     padding-right: 40px;
     padding-left : ${(props) => props.media ? `130px` :`40px`};
 `
+//======Component======//
 
 const Main=()=>{
     //mediaquery
@@ -28,16 +34,16 @@ const Main=()=>{
     const isVideoValue = useRecoilValue(videoState)
 
     return (
-        isVideoValue
-        ?
-        <Video/> 
-        : 
-        <MainContainer media={isNarrow}>
+        // isVideoValue
+        // ?
+        // <Video/> 
+        // : 
+        <ContainerMain media={isNarrow}>
             {mainStateValue=="home" && <Home/>}
             {mainStateValue=="shorts" && <Shorts/>}
             {mainStateValue=="subscribe" && <Subscribe/>}
             {mainStateValue=="storage" && <Storage/>}    
-        </MainContainer>
+        </ContainerMain>
     )
 }
 
