@@ -1,13 +1,13 @@
 import React from "react"
 import styled, { css } from "styled-components"
-import {useRecoilValue, useRecoilState} from "recoil"
+import {useRecoilValue, useSetRecoilState} from "recoil"
 
 //import component
 import ImgTextBtn from "../../../components/ImgTextBtn"
 
 //import recoil state 
 import {ContentDataState} from "../../../recoil/HomeState"
-import {videoState} from "../../../recoil/HomeState"
+import {videoPageState} from "../../../recoil/HomeState"
 
 //import style 
 import {Div,CusorDiv,NoneEventsDiv} from "../../../styles/Div"
@@ -22,7 +22,6 @@ const ContentContainerDiv = styled(CusorDiv)`
     flex-grow: 1;
     max-width :350px;
 `
-
 const MouseOverDiv = styled(NoneEventsDiv)`
     top:83%;
     right: 5px;
@@ -59,17 +58,15 @@ const HomeContent=(props)=>{
     //state
     const [isMouseOver,setIsMouseOver]=React.useState(false)
     const [isContentExpansion,setIsContentExpansion]=React.useState(false)
+    //recoilState
+    const setVideoPageState=useSetRecoilState(videoPageState)
     const contentDataValue=useRecoilValue(ContentDataState)
-    const [isVideoValue, setIsVideoState]=useRecoilState(videoState)
     //event
     const contentMouseOverInfoEvent=()=>{
         isMouseOver ? setIsMouseOver(false) :  setIsMouseOver(true)
     }
     const contentExpansionEvent=()=>{
         isContentExpansion ? setIsContentExpansion(false) :  setIsContentExpansion(true)
-    }
-    const videoPageMoveEvent=()=>{
-        isVideoValue ? setIsVideoState(false) :  setIsVideoState(true)
     }
 
     const contentExpansionBtnEvent=()=>{
@@ -78,7 +75,7 @@ const HomeContent=(props)=>{
 
         switch(target){
             case "0":
-                videoPageMoveEvent()
+                setVideoPageState("video") 
                 break
             case "1":
                 break
@@ -123,8 +120,8 @@ const HomeContent=(props)=>{
                     isContentExpansion
                     ?
                     <Div width="100%" height="60px" flex_style="flexSpaceAround" onClick={contentExpansionBtnEvent}>
-                        <ImgTextBtn position="HomeContentExpansion" imgPosition="HomeContentExpansion" pPosition="HomeContentExpansion" data={contentExpansionBtnData[0]}/>
-                        <ImgTextBtn position="HomeContentExpansion" imgPosition="HomeContentExpansion" pPosition="HomeContentExpansion" data={contentExpansionBtnData[1]}/>
+                        <ImgTextBtn btn_style="homeContentExpansionBtn" img_style="smallImg" p_style="smallP" data={contentExpansionBtnData[0]}/>
+                        <ImgTextBtn btn_style="homeContentExpansionBtn" img_style="smallImg" p_style="smallP" data={contentExpansionBtnData[1]}/>
                     </Div>
                     :
                     null

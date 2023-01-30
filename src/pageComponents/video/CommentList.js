@@ -1,59 +1,59 @@
 import React from "react"
 import styled from "styled-components"
-
-import Comment from "./Comment"
-import CommentWrite from "./CommentWrite"
-
-import ImgTextBtn from "../../components/ImgTextBtn"
-import {H1} from "../../styles/H1"
-
-import {CommentDataState, VideoBtnDataState} from "../../recoil/VideoState"
 import {useRecoilValue} from "recoil"
 
-const CommentListContainer = styled.aside`
-    width:100%;
-    margin-top:15px;
-    padding-left: 10px;
-    padding-right: 10px;
-`
-const CommentHeader = styled.section`
-    width: 150px;
-    font-size: 17px;
-    color: #b1b1b1;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-`
-const Comments = styled.section`
-    width: 100%;
-    height :auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-`
+//import component
+import Comment from "./Comment"
+import CommentWrite from "./CommentWrite"
+import ImgTextBtn from "../../components/ImgTextBtn"
 
+//import recoil state 
+import {CommentDataState} from "../../recoil/VideoState"
+
+//import style 
+import {Div} from "../../styles/Div"
+import {H1} from "../../styles/H1"
+
+//======Component======//
 
 const CommentList=()=>{
-
+    //staticData
+    const commentBtnData=[
+        {   "id":"0",
+            "img":"/img/menu.png",
+            "txt":"정렬기준"
+        },
+        {   "id":"1",
+            "img":"/img/likeOutline.png"
+        },
+        {   "id":"2",
+            "img":"/img/dislike.png"
+        },
+        {   "id":"3",
+            "txt":"취소"
+        },
+        {   "id":"4",
+            "img":"완료"
+        },
+    ]
+    //recoilState
     const commentDataValue=useRecoilValue(CommentDataState)
-    const videoBtnDataValue=useRecoilValue(VideoBtnDataState)
 
     return (
-        <CommentListContainer>
-            <CommentHeader>
-                <H1 font_size="17px">댓글</H1>
-                <ImgTextBtn position="CommentListSort" imgPosition="CommentListSort" pPosition="CommentListSort" data={videoBtnDataValue[8]}/>
-            </CommentHeader>
-            <CommentWrite/>
-            <Comments>
+        <Div width="100%" margin_top="15px" margin_right="10px" margin_left="10px">
+            <Div  width="150px" flex_style="flexSpaceAround">
+                <H1 color="#b1b1b1" font_size="small">댓글</H1>
+                <ImgTextBtn btn_style="CommentListSortBtn" img_style="extraSmallImg" p_style="smallP" data={commentBtnData[0]}/>
+            </Div>
+            <CommentWrite commentBtnData={commentBtnData}/>
+            <Div  width="100%" flex_direction="column">
             {
                 commentDataValue.map((data,index)=>{
-                return <Comment key={data} index={index}/>
+                return <Comment key={data} index={index} commentBtnData={commentBtnData}/>
                 })
             } 
-            </Comments>
-        </CommentListContainer>
+            </Div>
+        </Div>
     )
 }
 

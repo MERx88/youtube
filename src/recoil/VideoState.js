@@ -14,8 +14,3 @@ export const RecommandVideoDataState = atom({
     "key":"RecommandVideoDataState",
     "default": []
 })
-
-export const VideoBtnDataState = atom({
-    "key":"VideoBtnDataState",
-    "default": []
-})

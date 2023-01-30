@@ -1,20 +1,18 @@
 import React from "react"
 import styled from "styled-components"
-import {useRecoilState} from "recoil"
+import {useRecoilState,useSetRecoilState} from "recoil"
 
 //import component
 import ImgBtn from "../../components/ImgBtn"
-import TestBtn from "../../components/testBtn"
 import HeaderPopUpMenu from "./HeaderPopUpMenu"
 
 //import recoil state 
-import {sideMenuOpenState} from "../../recoil/HeaderNavState"
+import {sideMenuOpenState, mainState} from "../../recoil/HeaderNavState"
 import {videoState, popUpMenuState} from "../../recoil/HomeState"
 
 //import style 
 import {Div} from "../../styles/Div"
 import {Input} from "../../styles/Input"
-import {Img} from "../../styles/Img"
 import {useMaxNarrow} from "../../hooks/useMedia"
 
 //======style======//
@@ -30,7 +28,7 @@ const HeadMenuBtnContainerDiv = styled(Div)`
 const Header=()=>{
     //mediaquery
     let isMaxNarrow=useMaxNarrow()
-    //data
+    //staticData
     const headerIconData=[
         {   "id":"0",
             "img":"/img/menu.png",
@@ -85,19 +83,16 @@ const Header=()=>{
             "txt":"로그아웃"
         }
     ]
-    //state
+    //recoilState
     const [sideMenuOpenValue, setSideMenuOpenState]=useRecoilState(sideMenuOpenState)
-    const [isVideoValue, setIsVideoState]=useRecoilState(videoState)
     const [popUpMenuValue, setPopUpMenuState]=useRecoilState(popUpMenuState)
-
+    const setMainState = useSetRecoilState(mainState)
+    
+    //event
     const isSideMenuOpen=()=>{
         sideMenuOpenValue ? setSideMenuOpenState(false) : setSideMenuOpenState(true) 
     }
-    // const videoPageMoveEvent=()=>{
-    //     isVideoValue ? setIsVideoState(false) :  setIsVideoState(true)
-    // }
     
-    //event
     const headMenuBtnEvent=()=>{
 
         const target=event.target.id
@@ -107,7 +102,7 @@ const Header=()=>{
                 isSideMenuOpen()
                 break
             case "1":
-                // videoPageMoveEvent()
+                setMainState("home")
                 break
             case "2":
                 break
@@ -132,22 +127,22 @@ const Header=()=>{
         </HeaderPopUpMenu>
         <HeaderDiv width="100%" height="70px" background_color="#181818" position="fixed" flex_style="flexSpaceBetween" onClick={headMenuBtnEvent}>
             <HeadMenuBtnContainerDiv width="200px" margin_left="13px" flex_style="flexSpaceAround">
-                <TestBtn btn_style="headerBtn" img_style="mediumImg" data={headerIconData[0]}/>
-                <Img height="27px" margin_left="15px" background_color="#181818" src={headerIconData[1].img}/>
+                <ImgBtn btn_style="headerBtn" img_style="mediumImg" data={headerIconData[0]}/>
+                <ImgBtn btn_style="headerLogo" img_style="largeImg" data={headerIconData[1]}/>
             </HeadMenuBtnContainerDiv>
             
             <Div width="50%" flex_style="flexCenter">
                 <Div width="80%" height="40px" border="1px solid #3d3d3d" border_radius="50px" position="relative" flex_style="flexCenter">
                     <Input width="80%" height="25px" margin_right="12%" color="white" font_size="15px" background_color="#181818" type="text" placeholder="검색"/>
-                    <TestBtn btn_style="headerSearchBtn" img_style="mediumImg" data={headerIconData[2]} />
+                    <ImgBtn btn_style="headerSearchBtn" img_style="mediumImg" data={headerIconData[2]} />
                 </Div>
-                <TestBtn btn_style="headerMicBtn" img_style="mediumImg" data={headerIconData[3]} />
+                <ImgBtn btn_style="headerMicBtn" img_style="mediumImg" data={headerIconData[3]} />
             </Div>
         
             <HeadMenuBtnContainerDiv width="200px" flex_style="flexSpaceAround">
-                <TestBtn btn_style="headerBtn" img_style="mediumImg" data={headerIconData[4]} />
-                <TestBtn btn_style="headerBtn" img_style="mediumImg" data={headerIconData[5]}/>
-                <TestBtn btn_style="headerBtn" img_style="largeCircleImg" data={headerIconData[6]} />
+                <ImgBtn btn_style="headerBtn" img_style="mediumImg" data={headerIconData[4]} />
+                <ImgBtn btn_style="headerBtn" img_style="mediumImg" data={headerIconData[5]}/>
+                <ImgBtn btn_style="headerBtn" img_style="largeCircleImg" data={headerIconData[6]} />
             </HeadMenuBtnContainerDiv>
         </HeaderDiv>
         </React.Fragment>

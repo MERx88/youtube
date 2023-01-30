@@ -6,8 +6,8 @@ import {useRecoilValue, useSetRecoilState, useRecoilState} from "recoil"
 import ImgTextBtn from "../../components/ImgTextBtn"
 
 //import recoil state 
-import {videoState} from "../../recoil/HomeState"
-import {BtnDataState, sideMenuOpenState, mainState} from "../../recoil/HeaderNavState"
+import {sideMenuOpenState, mainState} from "../../recoil/HeaderNavState"
+import {videoPageState} from "../../recoil/HomeState"
 
 //import style 
 import {Div} from "../../styles/Div"
@@ -24,7 +24,7 @@ const navDetailDiv = styled(Div)`
 const Nav=()=>{
     //mediaquery
     let isNarrow=useNarrow()
-    //data
+    //staticData
     const navIconData=[
         {   "id":"0",
             "img":"/img/sideMenuIcon0.png",
@@ -43,36 +43,27 @@ const Nav=()=>{
             "txt":"보관함",
         }
     ]
-    //state
+    //recoilState
     const sideMenuOpenValue = useRecoilValue(sideMenuOpenState)
     const setMainState = useSetRecoilState(mainState)
-    const [isVideoValue, setIsVideoState]=useRecoilState(videoState)
+    const videoPageValue = useRecoilValue(videoPageState)
     //event
-    const videoPageMoveEvent=()=>{
-        isVideoValue ? setIsVideoState(false) :  setIsVideoState(true)
-    }
-
     const sideMenuBtnEvent=()=>{
 
         const target=event.target.id
-
-        const sideMenuBtn=(mainState)=>{
-            setMainState(mainState)
-        }
     
         switch(target){
             case "0":
-                sideMenuBtn("home")
-                videoPageMoveEvent()
+                setMainState("home")
                 break
             case "1":
-                sideMenuBtn("shorts")
+                setMainState("shorts")
                 break
             case "2":
-                sideMenuBtn("subscribe")
+                setMainState("subscribe")
                 break
             case "3":
-                sideMenuBtn("storage")
+                setMainState("storage")
                 break
         }
     }
@@ -83,27 +74,29 @@ const Nav=()=>{
             <navDetailDiv width="240px" height="1500px" margin_top="83px" flex_direction="column" position="fixed" background_color="#181818" onClick={sideMenuBtnEvent}>
             {
                 navIconData.map((value)=>{
-                    return <ImgTextBtn position="SideMenuDetail" imgPosition="SideMenuDetail" pPosition="SideMenuDetail" data={value}/>
+                    return <ImgTextBtn btn_style="navDetailBtn" img_style="mediumImg" p_style="mediumP" data={value}/>
                 })
             }  
             </navDetailDiv>
         :
             isNarrow
             &&
-                (
-                isVideoValue
-                ?
-                null
-                :
-                <Div width="80px" margin_top="70px" flex_direction="column" position="fixed" background_color="#181818" onClick={sideMenuBtnEvent}>
-                    {
-                        navIconData.map((value)=>{
-                            return <ImgTextBtn position="SideMenuSimple" imgPosition="SideMenuSimple" pPosition="SideMenuSimple" data={value}/>
-                            
-                        })
-                    }  
-                </Div>
-                )
+            <React.Fragment>
+                {
+                    videoPageValue =="video" && null
+                }
+                {/* {
+                    videoPageValue =="main" && 
+                        <Div width="80px" margin_top="70px" flex_direction="column" position="fixed" background_color="#181818" onClick={sideMenuBtnEvent}>
+                            {
+                                navIconData.map((value)=>{
+                                    return <ImgTextBtn btn_style="navSimpleBtn" img_style="mediumImg" p_style="extraSmallP" data={value}/>
+                                    
+                                })
+                            }  
+                        </Div>
+                } */}
+            </React.Fragment>
     )
 }
 

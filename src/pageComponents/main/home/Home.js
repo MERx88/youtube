@@ -21,7 +21,7 @@ const ContentsDiv = styled(Div)`
 //======Component======//
 
 const Home=()=>{
-    //data
+    //dynamicData
     const contentData=[
         {   "content_id":"0",
             "contentThumbnail":"/img/contentImg0.png",
@@ -114,6 +114,7 @@ const Home=()=>{
             "contentUploadDate":"3년전"
         }
     ]
+    //staticData
     const contentExpansionBtnData=[
         {   "id":"0",
             "img":"/img/playlist.png",

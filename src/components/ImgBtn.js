@@ -1,6 +1,6 @@
 import React from "react"
 
-import styled, { css } from "styled-components"
+import { css } from "styled-components"
 
 import {Button} from "../styles/Button"
 import {Img} from "../styles/Img"
@@ -19,6 +19,12 @@ const BTN_STYLE= {
         &:hover {
             background-color: #3d3d3d;
         }
+    `,
+    headerLogo : css`
+        width: 128px;
+        height: 27px;
+        margin-left : 15px;
+        background-color: #181818;
     `,
     headerSearchBtn : css`
         width: 80px;
@@ -74,7 +80,7 @@ const BTN_STYLE= {
     `,
 
 
-//======Comment Menu Button======//
+//======Comment Button======//
 
     commentMenuBtn : css`
         width:25px;
@@ -96,7 +102,7 @@ const IMG_STYLE= {
         height: 19px;
     `,
     largeImg : css`
-        height: 45px;
+        height: 27px;
     `,
     extraLargeImg : css`
         height: 50px;
@@ -129,18 +135,18 @@ const IMG_STYLE= {
 
 // ========================================== //
 
-const TestBtn=(props)=>{
+const ImgBtn=(props)=>{
     const {btn_style, img_style, data} = props
     const btnStyle = BTN_STYLE[btn_style];
     const imgStyle = IMG_STYLE[img_style];
  	return(
-        <Button btnStyle={btnStyle}>
+        <Button id={data.id} btnStyle={btnStyle}>
             <Img imgStyle={imgStyle} src={data.img}/>
         </Button>
 	)
 }
 
-export default TestBtn
+export default ImgBtn
 
 
   

@@ -1,77 +1,67 @@
 import React from "react"
 import styled from "styled-components"
-
-import ImgBtn from "../../components/ImgBtn"
-import ImgTextBtn from "../../components/ImgTextBtn"
-import {P} from "../../styles/P"
-import {CircleImg} from "../../styles/Img"
-
-import {useMaxWide, useWide, useNomal, useNarrow, useMaxNarrow} from "../../hooks/useMedia"
-
-import {VideoDataState, VideoBtnDataState } from "../../recoil/VideoState"
 import {useRecoilValue} from "recoil"
 
-const ProfileSection = styled.section`
-    height: 50px;
-    display: flex;
-    margin-top :10px;
-    flex-direction: row;
-    justify-content:space-between;
-    
-`
-const ProfileLeft = styled.div`
-    width: 250px;
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-`
-const ProfileInfoContainer = styled.div`
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    margin-top: 10px;
-    margin-left: 5px;
-`
-const ProfileRight = styled.div`
-    width: ${(props) => props.media ? `55%` : `43%`};
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-`
-const VideoInfoSection = styled.section`
-    height: 100px;
-    margin-top: 10px;
-    padding: 20px;
-    font-size: 15px;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    background-color: #3d3d3d;
-    border-radius: 15px;
-`
-const VideoInfoContainer = styled.div`
-    display: flex;
-    flex-direction: row;
-    margin-bottom : 5px;
-`
+//import component
+import ImgBtn from "../../components/ImgBtn"
+import ImgTextBtn from "../../components/ImgTextBtn"
 
+//import recoil state 
+import {VideoDataState} from "../../recoil/VideoState"
+
+//import style 
+import {Div} from "../../styles/Div"
+import {CircleImg} from "../../styles/Img"
+import {P} from "../../styles/P"
+import {useMaxWide, useWide, useNomal} from "../../hooks/useMedia"
+
+//======Component======//
 
 const VideoBtnInfo=()=>{
-
+    //mediaquery
     let isMaxWide=useMaxWide()
     let isWide=useWide()
     let isNomal=useNomal()
-    let isNarrow=useNarrow()
-    let isMaxNarrow=useMaxNarrow()
-
-    const videoDataValue=useRecoilValue(VideoDataState)
-    const videoBtnDataValue=useRecoilValue(VideoBtnDataState)
-
+    //staticData
+    const videoBtnData=[
+        {   "id":"0",
+            "img":"/img/bell.png",
+            "txt":"구독중"
+        },
+        {   "id":"1",
+            "img":"/img/likeOutline.png"
+        },
+        {   "id":"2",
+            "img":"/img/dislike.png"
+        },
+        {   "id":"3",
+            "img":"/img/share.png",
+            "txt":"공유"
+        },
+        {   "id":"4",
+            "img":"/img/download.png",
+            "txt":"오프라인 저장"
+        },
+        {   "id":"5",
+            "img":"/img/donation.png",
+            "txt":"Thanks"
+        },
+        {   "id":"6",
+            "img":"/img/clip.png",
+            "txt":"클립"
+        },
+        {   "id":"7",
+            "img":"/img/menu.png",
+        },
+        {   "id":"8",
+            "img":"/img/likeFill.png"
+        }
+    ]
+    //state
     const [isLike,setIsLike]=React.useState(false)
-
+    //recoilState
+    const videoDataValue=useRecoilValue(VideoDataState)
+    //event
     const likeEvent=()=>{
         isLike ? setIsLike(false) :  setIsLike(true)
     }
@@ -107,42 +97,42 @@ const VideoBtnInfo=()=>{
 
     return (
         <React.Fragment>
-            <ProfileSection onClick={profileMenuBtnEvent}>
-                <ProfileLeft>
+            <Div height="50px" margin_top="10px" flex_style="flexSpaceBetween" onClick={profileMenuBtnEvent}>
+                <Div width="250px" height="100%"  margin_top="10px" flex_style="flexSpaceAround">
                     <CircleImg height="45px" src={videoDataValue[0]?.profileImg}/>
-                    <ProfileInfoContainer>
-                        <P font_size="18px">
+                    <Div height="100%"  margin_top="10px" margin_left="5px"  flex_direction="column">
+                        <P font_size="extraLarge">
                             {videoDataValue[0]?.videoProfileName}
                         </P>
-                        <P color="#3d3d3d" font_size="12px">
+                        <P color="#3d3d3d" font_size="small">
                             구독자 {videoDataValue[0]?.videoProfileSubscriber}
                         </P>
-                    </ProfileInfoContainer>
-                    <ImgTextBtn position="VideoMenu" imgPosition="VideoMenu" pPosition="VideoMenu" data={videoBtnDataValue[0]}/>
-                </ProfileLeft>
-                <ProfileRight media={isNomal}>
-                    <ImgBtn position="VideoMenu" imgPosition="VideoMenu" data={isLike ? videoBtnDataValue[9] : videoBtnDataValue[1]}/>
-                    <ImgBtn position="VideoMenu" imgPosition="VideoMenu" data={videoBtnDataValue[2]}/>
-                    <ImgTextBtn position="VideoMenu" imgPosition="VideoMenu" pPosition="VideoMenu" data={videoBtnDataValue[3]}/>
-                    {isNomal ?<ImgTextBtn position="VideoMenu" imgPosition="VideoMenu" pPosition="VideoMenu" data={videoBtnDataValue[4]}/>: null}
-                    {isMaxWide ? <ImgTextBtn position="VideoMenu" imgPosition="VideoMenu" pPosition="VideoMenu" data={videoBtnDataValue[5]}/> : null}
-                    {isWide ?<ImgTextBtn position="VideoMenu" imgPosition="VideoMenu" pPosition="VideoMenu" data={videoBtnDataValue[6]}/> : null}
-                    <ImgBtn position="VideoMenu" imgPosition="VideoMenu" data={videoBtnDataValue[7]}/>
-                </ProfileRight>
-            </ProfileSection>
-            <VideoInfoSection>
-                <VideoInfoContainer>
-                    <P font_size="15px">
+                    </Div>
+                    <ImgTextBtn btn_style="videoMenuBtn" img_style="smallImg" p_style="smallP" data={videoBtnData[0]}/>
+                </Div>
+                <Div width="43%" flex_style="flexSpaceAround" media={isNomal}>
+                    <ImgBtn btn_style="videoMenuBtn" img_style="extraSmallImg" data={isLike ? videoBtnData[8] : videoBtnData[1]}/>
+                    <ImgBtn btn_style="videoMenuBtn" img_style="extraSmallImg" data={videoBtnData[2]}/>
+                    <ImgTextBtn btn_style="videoMenuBtn" img_style="smallImg" p_style="smallP" data={videoBtnData[3]}/>
+                    {isNomal ?<ImgTextBtn btn_style="videoMenuBtn" img_style="smallImg" p_style="smallP" data={videoBtnData[4]}/>: null}
+                    {isMaxWide ? <ImgTextBtn btn_style="videoMenuBtn" img_style="smallImg" p_style="smallP" data={videoBtnData[5]}/> : null}
+                    {isWide ?<ImgTextBtn btn_style="videoMenuBtn" img_style="smallImg" p_style="smallP" data={videoBtnData[6]}/> : null}
+                    <ImgBtn btn_style="videoMenuBtn" img_style="extraSmallImg" data={videoBtnData[7]}/>
+                </Div>
+            </Div>
+            <Div  height="100px" margin_top="10px" border_radius="15px" background_color="#3d3d3d" flex_direction="column" >
+                <Div margin_bottom="5px" >
+                    <P color="white" font_size="medium">
                         {videoDataValue[0]?.videoView}
                     </P>
-                    <P font_size="15px">
+                    <P color="white" font_size="medium">
                         {videoDataValue[0]?.videotUploadDate}
                     </P>
-                </VideoInfoContainer>
-                <P font_size="15px">
+                </Div>
+                <P color="white" font_size="medium">
                     {videoDataValue[0]?.videoInfo}
                 </P>
-            </VideoInfoSection>
+            </Div>
         </React.Fragment>
     )
 }

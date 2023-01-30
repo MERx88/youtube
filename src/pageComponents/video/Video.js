@@ -1,43 +1,26 @@
 import React, {useEffect} from "react"
 import styled from "styled-components"
+import {useSetRecoilState} from "recoil"
 
+//import component
 import VideoBtnInfo from "./VideoBtnInfo"
 import RecommandVideoList from "./RecommandVideoList"
 import CommentList from "./CommentList"
 
-import ImgBtn from "../../components/ImgBtn"
-import ImgTextBtn from "../../components/ImgTextBtn"
+//import style'
+import {Div} from "../../styles/Div"
 import {H1} from "../../styles/H1"
-import {P} from "../../styles/P"
-import {CircleImg} from "../../styles/Img"
 import {useNomal} from "../../hooks/useMedia"
 
-import {VideoDataState, CommentDataState, RecommandVideoDataState, VideoBtnDataState } from "../../recoil/VideoState"
-import {useSetRecoilState} from "recoil"
+//import recoil state 
+import {VideoDataState, CommentDataState, RecommandVideoDataState} from "../../recoil/VideoState"
 
-const VideoMain = styled.main`
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: end;
-`
-const VideoCommentContainer = styled.div`
-    width: 100%;
-    height: 2000px;
-    padding-left: 30px;
-    padding-top: 100px;
-    padding-right: 30px;
-    display: flex;
-    flex-direction: column;
-`
-const VideoContainer = styled.div`
-    width: 100%;
-`
+//======Component======//
 
 const Video=()=>{
-
+    //mediaquery
     let isNomal=useNomal()
-
+     //dynamicData
     const videoData=[
         {   "id":"0",
             "video":"/video/video0.mov",
@@ -116,76 +99,35 @@ const Video=()=>{
             "recommandVideoUploadDate":"2년전"
         }
     ]
-
-    const videoBtnData=[
-        {   "id":"0",
-            "img":"/img/bell.png",
-            "txt":"구독중"
-        },
-        {   "id":"1",
-            "img":"/img/likeOutline.png"
-        },
-        {   "id":"2",
-            "img":"/img/dislike.png"
-        },
-        {   "id":"3",
-            "img":"/img/share.png",
-            "txt":"공유"
-        },
-        {   "id":"4",
-            "img":"/img/download.png",
-            "txt":"오프라인 저장"
-        },
-        {   "id":"5",
-            "img":"/img/donation.png",
-            "txt":"Thanks"
-        },
-        {   "id":"6",
-            "img":"/img/clip.png",
-            "txt":"클립"
-        },
-        {   "id":"7",
-            "img":"/img/menu.png",
-        },
-        {   "id":"8",
-            "img":"/img/menu.png",
-            "txt":"정렬기준",
-        },
-        {   "id":"9",
-            "img":"/img/likeFill.png"
-        },
-    ]
-
+    //recoilState
     const setVideoDataState=useSetRecoilState(VideoDataState)
     const setCommentDataState=useSetRecoilState(CommentDataState)
     const setRecommandVideoDataState=useSetRecoilState(RecommandVideoDataState)
-    const setVideoBtnDataState=useSetRecoilState(VideoBtnDataState)
     
     useEffect(() => {
         setVideoDataState(videoData)
         setCommentDataState(commentData)
         setRecommandVideoDataState(recommandVideoData)
-        setVideoBtnDataState(videoBtnData)
     },[])
 
     return (
-        <VideoMain>
-            <VideoCommentContainer>
-                <VideoContainer>
+        <Div width="100%" flex_style="flexRightCenter" >
+            <Div width="100%" height="2000px" margin_top="100px" margin_right="30px" margin_left="100px" flex_direction="column">
+                <Div width="100%" flex_direction="column">
                     <video  width="100%" autoplay controls>
                         <source src={videoData[0].video} type="video/mp4"/>
                     </video>
-                    <H1 font_size="23px" padding_top="10px">
+                    <H1  margin_top="10px" font_size="large">
                         {videoData[0].videoTitle}
                     </H1>
                     <VideoBtnInfo/>
-                </VideoContainer>
-                {isNomal ? null : <RecommandVideoList recommandVideoData={recommandVideoData}/>}
+                </Div>
+                {/* {isNomal ? null : <RecommandVideoList/>} */}
                 <CommentList/>
-            </VideoCommentContainer>
-            {isNomal ? <RecommandVideoList recommandVideoData={recommandVideoData}/> : null}
-           
-        </VideoMain>
+            </Div>
+            <RecommandVideoList/>
+            {/* {isNomal ? <RecommandVideoList/> : null} */}
+        </Div>
     )
 }
 

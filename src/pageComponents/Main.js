@@ -7,11 +7,11 @@ import Home from "./main/home/Home"
 import Shorts from "./main/Shorts"
 import Subscribe from "./main/Subscribe"
 import Storage from "./main/Storage"
-// import Video from "./video/Video"
+import Video from "./video/Video"
 
 //import recoil state 
 import {mainState} from "../recoil/HeaderNavState"
-import {videoState} from "../recoil/HomeState"
+import {videoPageState} from "../recoil/HomeState"
 
 //import style 
 import {useNarrow} from "../hooks/useMedia"
@@ -31,19 +31,24 @@ const Main=()=>{
     let isNarrow=useNarrow()
     //state
     const mainStateValue = useRecoilValue(mainState)
-    const isVideoValue = useRecoilValue(videoState)
+    const videoPageValue = useRecoilValue(videoPageState)
 
     return (
-        // isVideoValue
-        // ?
-        // <Video/> 
-        // : 
-        <ContainerMain media={isNarrow}>
-            {mainStateValue=="home" && <Home/>}
-            {mainStateValue=="shorts" && <Shorts/>}
-            {mainStateValue=="subscribe" && <Subscribe/>}
-            {mainStateValue=="storage" && <Storage/>}    
-        </ContainerMain>
+        <React.Fragment>
+        {
+            videoPageValue=="main" && 
+            <Video/> 
+        }
+        {/* {
+            videoPageValue=="main" && 
+            <ContainerMain media={isNarrow}>
+                {mainStateValue=="home" && <Home/>}
+                {mainStateValue=="shorts" && <Shorts/>}
+                {mainStateValue=="subscribe" && <Subscribe/>}
+                {mainStateValue=="storage" && <Storage/>}    
+            </ContainerMain>
+        } */}
+        </React.Fragment>
     )
 }
 

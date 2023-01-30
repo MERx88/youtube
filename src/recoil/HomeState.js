@@ -5,9 +5,9 @@ export const ContentDataState = atom({
     "default": []
 })
 
-export const videoState = atom({
-    "key":"videoState",
-    "default":false
+export const videoPageState = atom({
+    "key":"videoPageState",
+    "default":"main"
 })
 
 export const popUpMenuState = atom({
