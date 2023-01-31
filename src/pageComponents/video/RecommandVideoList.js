@@ -37,7 +37,7 @@ const RecommandVideoList=()=>{
     const recommandVideoDataValue=useRecoilValue(RecommandVideoDataState)
 
     return (
-        <Div  width="380px" flex_direction="column" >
+        <Div width="400px" flex_direction="column" margin_top="100px"  margin_right="30px">
             <Div  width="100%" height="50px" margin_top="10px" flex_style="flexSpaceAround"  media={isNomal}>
                 {
                     RecommandVideoListSortBtnData.map((value)=>{

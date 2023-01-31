@@ -15,7 +15,7 @@ import {useNarrow} from "../../hooks/useMedia"
 
 //======style======//
 
-const navDetailDiv = styled(Div)`
+const NavDetailDiv = styled(Div)`
     overflow-y: scroll;
     z-index: 2;
 `
@@ -71,13 +71,13 @@ const Nav=()=>{
     return (
         sideMenuOpenValue
         ?
-            <navDetailDiv width="240px" height="1500px" margin_top="83px" flex_direction="column" position="fixed" background_color="#181818" onClick={sideMenuBtnEvent}>
+            <NavDetailDiv width="240px" height="1500px" margin_top="83px" flex_direction="column" position="fixed" background_color="#181818" onClick={sideMenuBtnEvent}>
             {
                 navIconData.map((value)=>{
                     return <ImgTextBtn btn_style="navDetailBtn" img_style="mediumImg" p_style="mediumP" data={value}/>
                 })
             }  
-            </navDetailDiv>
+            </NavDetailDiv>
         :
             isNarrow
             &&

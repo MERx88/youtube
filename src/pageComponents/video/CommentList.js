@@ -33,14 +33,14 @@ const CommentList=()=>{
             "txt":"취소"
         },
         {   "id":"4",
-            "img":"완료"
+            "txt":"완료"
         },
     ]
     //recoilState
     const commentDataValue=useRecoilValue(CommentDataState)
 
     return (
-        <Div width="100%" margin_top="15px" margin_right="10px" margin_left="10px">
+        <Div width="100%" margin_top="15px" margin_right="10px" margin_left="10px"  flex_direction="column" >
             <Div  width="150px" flex_style="flexSpaceAround">
                 <H1 color="#b1b1b1" font_size="small">댓글</H1>
                 <ImgTextBtn btn_style="CommentListSortBtn" img_style="extraSmallImg" p_style="smallP" data={commentBtnData[0]}/>

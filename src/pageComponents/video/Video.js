@@ -97,6 +97,54 @@ const Video=()=>{
             "channelTitle":"우왁굳",
             "recommandVideoView":"조회수 4만회",
             "recommandVideoUploadDate":"2년전"
+        },
+        {   "recommandVideoId":"5",
+            "recommandVideoThumbnail":"/img/contentImg2.png",
+            "recommandVideoRuntime":"2:12",
+            "recommandVideoTitle":"메롱",
+            "channelTitle":"우왁굳의 계륵",
+            "recommandVideoView":"조회수 12만회",
+            "recommandVideoUploadDate":"3년전"
+        },
+        {   "recommandVideoId":"6",
+            "recommandVideoThumbnail":"/img/contentImg3.png",
+            "recommandVideoRuntime":"10:20",
+            "recommandVideoTitle":"스이나 우매",
+            "channelTitle":"우왁굳의 사생활",
+            "recommandVideoView":"조회수 45만회",
+            "recommandVideoUploadDate":"71년전"
+        },
+        {   "recommandVideoId":"7",
+            "recommandVideoThumbnail":"/img/contentImg4.png",
+            "recommandVideoRuntime":"12:1",
+            "recommandVideoTitle":"발드컵 Grand Final",
+            "channelTitle":"우왁굳",
+            "recommandVideoView":"조회수 4만회",
+            "recommandVideoUploadDate":"2년전"
+        },
+        {   "recommandVideoId":"8",
+            "recommandVideoThumbnail":"/img/contentImg2.png",
+            "recommandVideoRuntime":"2:12",
+            "recommandVideoTitle":"메롱",
+            "channelTitle":"우왁굳의 계륵",
+            "recommandVideoView":"조회수 12만회",
+            "recommandVideoUploadDate":"3년전"
+        },
+        {   "recommandVideoId":"9",
+            "recommandVideoThumbnail":"/img/contentImg3.png",
+            "recommandVideoRuntime":"10:20",
+            "recommandVideoTitle":"스이나 우매",
+            "channelTitle":"우왁굳의 사생활",
+            "recommandVideoView":"조회수 45만회",
+            "recommandVideoUploadDate":"71년전"
+        },
+        {   "recommandVideoId":"10",
+            "recommandVideoThumbnail":"/img/contentImg4.png",
+            "recommandVideoRuntime":"12:1",
+            "recommandVideoTitle":"발드컵 Grand Final",
+            "channelTitle":"우왁굳",
+            "recommandVideoView":"조회수 4만회",
+            "recommandVideoUploadDate":"2년전"
         }
     ]
     //recoilState
@@ -111,8 +159,8 @@ const Video=()=>{
     },[])
 
     return (
-        <Div width="100%" flex_style="flexRightCenter" >
-            <Div width="100%" height="2000px" margin_top="100px" margin_right="30px" margin_left="100px" flex_direction="column">
+        <Div width="100%" margin_left="20px" flex_style="flexTopCenter">
+            <Div width="70%" margin_top="100px" margin_right="20px" flex_direction="column">
                 <Div width="100%" flex_direction="column">
                     <video  width="100%" autoplay controls>
                         <source src={videoData[0].video} type="video/mp4"/>

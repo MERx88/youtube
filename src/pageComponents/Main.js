@@ -18,7 +18,7 @@ import {useNarrow} from "../hooks/useMedia"
 
 //======style======//
 
-const  ContainerMain= styled.main`
+const ContainerMain= styled.main`
     max-width: 100%;
     padding-top: 140px;
     padding-right: 40px;

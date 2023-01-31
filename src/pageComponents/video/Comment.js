@@ -24,7 +24,7 @@ const Comment=(props)=>{
     return (
         <Div  width="100%" height="90px" margin_top="20px" >
             <CircleImg height="45px" src={commentDataValue[index].ProfilImg}/>
-            <Div margin_left="10px" >
+            <Div margin_left="10px" flex_direction="column">
                 <Div width="85px" height="25px" margin_top="5px" flex_style="flexSpaceBetween">
                     <P  font_size="medium">
                         {commentDataValue[index].commentProfileName}

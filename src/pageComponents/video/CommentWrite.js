@@ -21,7 +21,7 @@ const WriteCommentInput = styled(Input)`
     top : 12px;
     left : 55px;
 `
-const CommentClickBeforeP = styled(P)`
+const CommentClickBeforeDiv = styled(Div)`
     border-bottom: 1px solid #3d3d3d;
 `
 //======Component======//
@@ -52,18 +52,18 @@ const CommentWrite=(props)=>{
     }
 
     return (
-        <Div width="98%" height="80px" flex_direction="column"  position="relative" >
+        <Div width="98%" height="80px" margin_top="5px" flex_direction="column"  position="relative" >
             <Div width="100%" height="80px" flex_style="flexLeftCenter">
                 <CircleImg height="45px" src={videoDataValue[0]?.profileImg}/>
-                <Div  width="100%" height="20px" margin_bottom="5px" margin_left="13px" flex_style="flexCenter">
-                <CommentClickBeforeP color="#3d3d3d" font_size="large" onClick={writeCommentExpansionEvent}>댓글추가...</CommentClickBeforeP>
-                </Div>
+                <CommentClickBeforeDiv  width="100%" height="20px" margin_bottom="5px" margin_left="13px" flex_style="flexLeftCenter">
+                <P color="#3d3d3d" font_size="large" onClick={writeCommentExpansionEvent}>댓글추가...</P>
+                </CommentClickBeforeDiv>
             </Div>
             {   
                 isWriteCommentExpansion
                 ?
                 <React.Fragment>
-                    <WriteCommentInput  width="90%" height="20px" background_color="#181818" position="absolute" border="none" type="text"></WriteCommentInput>
+                    <WriteCommentInput  width="95%" height="23px" background_color="#181818" position="absolute" border="none" type="text"></WriteCommentInput>
                     <Div width="92%" height="40px" margin_left="60px" flex_style="flexSpaceBetween">
                         <ImgBtn btn_style="commentMenuBtn" img_style="smallImg" data={commentBtnData[1]}/>
                         <Div width="125px" height="40px" flex_style="flexSpaceBetween" onClick={commentMenuBtnEvent}>

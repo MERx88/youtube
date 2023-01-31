@@ -89,7 +89,7 @@ const VideoBtnInfo=()=>{
                 break
             case "7":
                 break
-            case "9":
+            case "8":
                 likeEvent()
                 break
         }
@@ -110,7 +110,7 @@ const VideoBtnInfo=()=>{
                     </Div>
                     <ImgTextBtn btn_style="videoMenuBtn" img_style="smallImg" p_style="smallP" data={videoBtnData[0]}/>
                 </Div>
-                <Div width="43%" flex_style="flexSpaceAround" media={isNomal}>
+                <Div width="50%" flex_style="flexSpaceAround" media={isNomal}>
                     <ImgBtn btn_style="videoMenuBtn" img_style="extraSmallImg" data={isLike ? videoBtnData[8] : videoBtnData[1]}/>
                     <ImgBtn btn_style="videoMenuBtn" img_style="extraSmallImg" data={videoBtnData[2]}/>
                     <ImgTextBtn btn_style="videoMenuBtn" img_style="smallImg" p_style="smallP" data={videoBtnData[3]}/>
@@ -121,15 +121,15 @@ const VideoBtnInfo=()=>{
                 </Div>
             </Div>
             <Div  height="100px" margin_top="10px" border_radius="15px" background_color="#3d3d3d" flex_direction="column" >
-                <Div margin_bottom="5px" >
+                <Div margin_top="20px" margin_bottom="5px" margin_left="20px">
                     <P color="white" font_size="medium">
                         {videoDataValue[0]?.videoView}
                     </P>
-                    <P color="white" font_size="medium">
+                    <P color="white" font_size="medium" margin_left="5px">
                         {videoDataValue[0]?.videotUploadDate}
                     </P>
                 </Div>
-                <P color="white" font_size="medium">
+                <P color="white" font_size="medium" margin_left="20px">
                     {videoDataValue[0]?.videoInfo}
                 </P>
             </Div>

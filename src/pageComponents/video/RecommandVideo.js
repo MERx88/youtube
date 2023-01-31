@@ -25,11 +25,11 @@ const RecommandVideo=(props)=>{
             <Div width="50%" height="100%" margin_left="8px" flex_direction="column">
                 <H1 font_size="small" margin_top="8px">{recommandVideoDataValue[index].recommandVideoTitle}</H1>
                 <P color="#3d3d3d" font_size="small" margin_top="3px">{recommandVideoDataValue[index].channelTitle}</P>
-                <Div  margin_top="3px" flex_style="flexCenter">
+                <Div  margin_top="3px" flex_style="flexLeftCenter" >
                     <P color="#3d3d3d" font_size="small">
                         {recommandVideoDataValue[index].recommandVideoView}
                     </P>
-                    <P color="#3d3d3d" font_size="small">
+                    <P color="#3d3d3d" font_size="small" margin_left="4px">
                         {recommandVideoDataValue[index].recommandVideoUploadDate}
                     </P>
                 </Div>
