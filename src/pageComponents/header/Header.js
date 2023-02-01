@@ -3,12 +3,15 @@ import styled from "styled-components"
 import {useRecoilState,useSetRecoilState} from "recoil"
 
 //import component
+// import MicPopUpMenu from "../../pageComponents/header/headerPopUpMenus/MicPopUpMenu"
+// import StreamingPopUpMenu from "../../pageComponents/header/headerPopUpMenus/StreamingPopUpMenu"
+// import AlarmPopUpMenu from "../../pageComponents/header/headerPopUpMenus/AlarmPopUpMenu"
+// import ProfilePopUpMenu from "../../pageComponents/header/headerPopUpMenus/ProfilePopUpMenu"
 import ImgBtn from "../../components/ImgBtn"
-import HeaderPopUpMenu from "./HeaderPopUpMenu"
 
 //import recoil state 
 import {sideMenuOpenState, mainState} from "../../recoil/HeaderNavState"
-import {videoState, popUpMenuState} from "../../recoil/HomeState"
+import {popUpMenuState} from "../../recoil/HomeState"
 
 //import style 
 import {Div} from "../../styles/Div"
@@ -16,7 +19,9 @@ import {Input} from "../../styles/Input"
 import {useMaxNarrow} from "../../hooks/useMedia"
 
 //======style======//
-
+const PopUpMenuContainerDiv = styled(Div)`
+    z-index: 2;
+`
 const HeaderDiv = styled(Div)`
     z-index: 1;
 `
@@ -53,36 +58,6 @@ const Header=()=>{
         }
     ]
 
-    const headerPopUpIconData=[
-        {   "id":"0",
-            "img":"/img/cross.png",
-        },
-        {   "id":"1",
-            "img":"/img/mic.png",
-        },
-        {   "id":"2",
-            "img":"/img/play-alt.png",
-            "txt":"동영상 업로드"
-        },
-        {   "id":"3",
-            "img":"/img/signal-stream.png",
-            "txt":"실시간 스트리밍 시작"
-        },
-        {   "id":"4",
-            "img":"/img/settings.png",
-        },
-        {   "id":"5",
-            "img":"/img/profileSectionBtnIcon2.png"
-        },
-        {   "id":"6",
-            "img":"/img/user.png",
-            "txt":"내 채널"
-        },
-        {   "id":"7",
-            "img":"/img/sign-out-alt.png",
-            "txt":"로그아웃"
-        }
-    ]
     //recoilState
     const [sideMenuOpenValue, setSideMenuOpenState]=useRecoilState(sideMenuOpenState)
     const [popUpMenuValue, setPopUpMenuState]=useRecoilState(popUpMenuState)
@@ -123,8 +98,12 @@ const Header=()=>{
 
     return (
         <React.Fragment>
-        <HeaderPopUpMenu headerPopUpIconData={headerPopUpIconData}>
-        </HeaderPopUpMenu>
+        <PopUpMenuContainerDiv width="100%" height="0px" position="fixed">
+                {popUpMenuValue=="mic" && <MicPopUpMenu/>}
+                {popUpMenuValue=="streaming" && <StreamingPopUpMenu/>}
+                {popUpMenuValue=="alarm" && <AlarmPopUpMenu/>}
+                {popUpMenuValue=="profile" && <ProfilePopUpMenu/>}
+        </PopUpMenuContainerDiv>
         <HeaderDiv width="100%" height="70px" background_color="#181818" position="fixed" flex_style="flexSpaceBetween" onClick={headMenuBtnEvent}>
             <HeadMenuBtnContainerDiv width="200px" margin_left="13px" flex_style="flexSpaceAround">
                 <ImgBtn btn_style="headerBtn" img_style="mediumImg" data={headerIconData[0]}/>

@@ -1,179 +1,66 @@
-import React from "react"
-import styled,{ css }  from "styled-components"
+// import React from "react"
+// import styled from "styled-components"
+// import {useRecoilValue} from "recoil"
 
-import {useRecoilValue} from "recoil"
-import {popUpMenuState} from "../../recoil/HomeState"
+// //import component
+// import MicPopUpMenu from "../../pageComponents/header/headerPopUpMenus/MicPopUpMenu"
+// import StreamingPopUpMenu from "../../pageComponents/header/headerPopUpMenus/StreamingPopUpMenu"
+// import AlarmPopUpMenu from "../../pageComponents/header/headerPopUpMenus/AlarmPopUpMenu"
+// import ProfilePopUpMenu from "../../pageComponents/header/headerPopUpMenus/ProfilePopUpMenu"
 
-import ImgTextBtn from "../../components/ImgTextBtn"
-import ImgBtn from "../../components/ImgBtn"
-import {CircleImg} from "../../styles/Img"
-import {H1} from "../../styles/H1"
-import {P} from "../../styles/P"
+// //import recoil state 
+// import {popUpMenuState} from "../../recoil/HomeState"
 
-const PopUpMenuContainer = styled.div`
-    width: 100%;
-    height :0px;
-    position : fixed;
-    z-index: 2;
-`
-const PopUpMenu= styled.div`
-    position : absolute;
-    background-color: #3d3d3d;
-    border-radius: 20px;
-    display :flex;
-    flex-direction :column;
-    align-items: center;
+// //import style 
+// import {Div} from "../../../styles/Div"
 
-    ${(p) => p.popUpMenuStyle}
-`
-const POPUPMENU = {
-    mic : css`
-        width : 800px;
-        height : 500px;
-        top : 5px ;
-        right : 350px;
-    `,
-    streaming : css`
-        width : 250px;
-        height : 120px;
-        top :65px;
-        right : 120px; 
-        padding-top : 20px;
-    `,
-    alarm : css`
-        width : 500px;
-        height : 500px;
-        top :65px;
-        right : 60px; 
-    `,
-    profile : css`
-        width : 300px;
-        height : 200px;
-        top :65px;
-        right : 5px; 
-    `
-    }
+// const PopUpMenuContainerDiv = styled(Div)`
+//     z-index: 2;
+// `
 
-const MicPopUpMenuHeader = styled.div`
-    width : 92%;
-    hegiht : 100px;
-    margin-top :10px;
-    display :flex;
-    flex-direction :row;
-    align-items: center;
-    justify-content: end;
-`
-const MicPopUpMenuBody = styled.div`
-    width : 92%;
-    hegiht : 300px;
-    margin-top :10px;
-    margin-bottom :230px;
-`
-const AlarmPopUpMenuHeader = styled.div`
-    width : 92%;
-    hegiht : 130px;
-    margin-top :10px;
-    display :flex;
-    flex-direction :row;
-    align-items: center;
-    justify-content: space-between;
-`
-const AlarmPopUpMenuList = styled.div`
-    border-top : 1px solid #6d6d6d;
-    width : 100%;
-    hegiht : 100%;
-`
-const ProfilePopUpMenuHeader = styled.div`
-    width : 93%;
-    hegiht : 180px;
-    margin-top :10px;
-    margin-bottom :16px;
-    padding-bottom :10px;
-    padding-left :20px;
-    border-bottom : 1px solid #6d6d6d;
-    display :flex;
-    flex-direction :row;
-    align-items: center;
-    justify-content: center;
-`
-const ProfilePopUpMenuHeaderInfoContainer = styled.div`
-    width :75%;
-    hegiht : 100%;
-    margin-left:20px;
-    display :flex;
-    flex-direction :column;
-   
-`
+// const HeaderPopUpMenu=()=>{
 
-const HeaderPopUpMenu=(props)=>{
-    const {headmenuPopUpMenuData}=props
-    //state
-    const popUpMenuValue=useRecoilValue(popUpMenuState)
-    const popUpMenuStyle = POPUPMENU [popUpMenuValue]
+//     const headerPopUpIconData=[
+//         {   "id":"0",
+//             "img":"/img/cross.png",
+//         },
+//         {   "id":"1",
+//             "img":"/img/mic.png",
+//         },
+//         {   "id":"2",
+//             "img":"/img/play-alt.png",
+//             "txt":"동영상 업로드"
+//         },
+//         {   "id":"3",
+//             "img":"/img/signal-stream.png",
+//             "txt":"실시간 스트리밍 시작"
+//         },
+//         {   "id":"4",
+//             "img":"/img/settings.png",
+//         },
+//         {   "id":"5",
+//             "img":"/img/profileSectionBtnIcon2.png"
+//         },
+//         {   "id":"6",
+//             "img":"/img/user.png",
+//             "txt":"내 채널"
+//         },
+//         {   "id":"7",
+//             "img":"/img/sign-out-alt.png",
+//             "txt":"로그아웃"
+//         }
+//     ]
+//     //state
+//     const popUpMenuValue=useRecoilValue(popUpMenuState)
 
-    return (
-        <PopUpMenuContainer>
-            <PopUpMenu popUpMenuStyle={popUpMenuStyle}>
-                {
-                    popUpMenuValue=="mic" && 
-                    <React.Fragment>
-                        <MicPopUpMenuHeader>
-                            <ImgBtn position="HeadPopUpMenu" imgPosition="HeadPopUpMenu" data={headmenuPopUpMenuData[0]}/>
-                        </MicPopUpMenuHeader>
-                        <MicPopUpMenuBody>
-                            <H1 font_size="24px" >음성으로 검색</H1>
-                            <P font_size="15px" padding_top="10px">음성으로 검색하려면 브라우저 설정으로 이동해 마이크에 대한 액세스를 허용하세요.</P>
-                        </MicPopUpMenuBody>
-                        <ImgBtn position="HeadPopUpMicMenu" imgPosition="HeadPopUpMicMenu" data={headmenuPopUpMenuData[1]}/>
-                    </React.Fragment>
-                }
-                {
-                    popUpMenuValue=="streaming" && 
-                    <React.Fragment>
-                        <ImgTextBtn position="HeadPopUpMenu" imgPosition="HeadPopUpMenu" pPosition="HeadPopUpMenu" data={headmenuPopUpMenuData[2]}/>
-                        <ImgTextBtn position="HeadPopUpMenu" imgPosition="HeadPopUpMenu" pPosition="HeadPopUpMenu" data={headmenuPopUpMenuData[3]}/>
-                    </React.Fragment>
-                }
-                {
-                    popUpMenuValue=="alarm" && 
-                    <React.Fragment>
-                        <AlarmPopUpMenuHeader>
-                            <H1 font_size="17px" >
-                                알림
-                            </H1>
-                            <ImgBtn position="HeadPopUpMenu" imgPosition="HeadPopUpMenu" data={headmenuPopUpMenuData[4]}/>
-                        </AlarmPopUpMenuHeader>
-                        <AlarmPopUpMenuList>
-                            {/* {
-                                sidemenuData.map((value)=>{
-                                    return <ImgTextBtn position="SideMenuSimple" imgPosition="SideMenuSimple" pPosition="SideMenuSimple" data={value}/>
-                                    
-                                })
-                            }   */}
-                        </AlarmPopUpMenuList>
-                    </React.Fragment>
-                }
-                {
-                    popUpMenuValue=="profile" && 
-                    <React.Fragment>
-                        <ProfilePopUpMenuHeader>
-                            <CircleImg height="45px" src={headmenuPopUpMenuData[5].img}/>
-                            <ProfilePopUpMenuHeaderInfoContainer>
-                                <P font_size="15px">
-                                    장승훈
-                                </P>
-                                <P font_size="15px">
-                                    @user-wc2ed7vd4p
-                                </P>
-                            </ProfilePopUpMenuHeaderInfoContainer>
-                        </ProfilePopUpMenuHeader>
-                        <ImgTextBtn position="HeadPopUpMenu" imgPosition="HeadPopUpMenu" pPosition="HeadPopUpMenu" data={headmenuPopUpMenuData[6]}/>
-                        <ImgTextBtn position="HeadPopUpMenu" imgPosition="HeadPopUpMenu" pPosition="HeadPopUpMenu" data={headmenuPopUpMenuData[7]}/>
-                    </React.Fragment>
-                }
-            </PopUpMenu>
-        </PopUpMenuContainer>
-    )
-}
+//     return (
+//         <PopUpMenuContainerDiv width="100%" height="0px" position="fixed">
+//                 {popUpMenuValue=="mic" && <MicPopUpMenu/>}
+//                 {popUpMenuValue=="streaming" && <StreamingPopUpMenu/>}
+//                 {popUpMenuValue=="alarm" && <AlarmPopUpMenu/>}
+//                 {popUpMenuValue=="profile" && <ProfilePopUpMenu/>}
+//         </PopUpMenuContainerDiv>
+//     )
+// }
 
-export default HeaderPopUpMenu
+// export default HeaderPopUpMenu
