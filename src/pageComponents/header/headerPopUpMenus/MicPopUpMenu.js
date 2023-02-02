@@ -13,17 +13,10 @@ import {Div} from "../../../styles/Div"
 import {H1} from "../../../styles/H1"
 import {P} from "../../../styles/P"
 
-// const PopUpMenu= styled.div`
-   
-//     ${(p) => p.popUpMenuStyle}
+const MicPopUpMenuBtnDiv= styled(Div)`
+   top : 50px;
+`
 
-//     width="800px" height="500px" border_radius="20px" background_color="#3d3d3d" position="absolute" flex_direction="column" flex_style="flexRightCenter" 
-// `
-// const POPUPMENU = {
-//     mic : css`
-//         top : 5px ;
-//         right : 350px;
-//     `}
 
 //======Component======//
 
@@ -55,7 +48,7 @@ const MicPopUpMenu=()=>{
     }
 
     return (
-        <Div width="800px" height="500px" border_radius="20px" background_color="#3d3d3d" position="absolute" flex_direction="column" flex_style="flexLeftCenter" onClick={micPopUpMenuBtnEvent}>
+        <MicPopUpMenuBtnDiv width="800px" height="500px" border_radius="20px" background_color="#3d3d3d" position="absolute" flex_direction="column" flex_style="flexLeftCenter" onClick={micPopUpMenuBtnEvent}>
             <Div width="92%" height="100px" margin_top="10px" flex_style="flexRightCenter">
                 <ImgBtn btn_style="headerPopUpBtn" img_style="mediumImg" data={BtnData[0]}/>
             </Div>
@@ -66,7 +59,7 @@ const MicPopUpMenu=()=>{
             <Div margin_bottom="20px">
             <ImgBtn btn_style="headerPopUpMicBtn" img_style="extraLargeImg" data={BtnData[1]}/>
             </Div>
-        </Div>
+        </MicPopUpMenuBtnDiv>
     )
 }
 

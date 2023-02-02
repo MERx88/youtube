@@ -110,19 +110,20 @@ const Header=()=>{
 
     return (
     <React.Fragment>
-        {/* {popUpMenuValue=="mic" && <MicPopUpMenu/>} */}
+        
         <HeaderDiv width="100%" height="70px" background_color="#181818" position="fixed" flex_style="flexSpaceBetween" onClick={headMenuBtnEvent}>
             <HeadMenuBtnContainerDiv width="200px" margin_left="13px" flex_style="flexSpaceAround">
                 <ImgBtn btn_style="headerBtn" img_style="mediumImg" data={headerIconData[0]}/>
                 <ImgBtn btn_style="headerLogo" img_style="largeImg" data={headerIconData[1]}/>
             </HeadMenuBtnContainerDiv>
             
-            <Div width="50%" flex_style="flexCenter">
+            <Div width="50%" flex_style="flexCenter" position="relative">
                 <Div width="80%" height="40px" border="1px solid #3d3d3d" border_radius="50px" position="relative" flex_style="flexCenter">
                     <Input width="80%" height="25px" margin_right="12%" color="white" font_size="15px" background_color="#181818" type="text" placeholder="검색"/>
                     <ImgBtn btn_style="headerSearchBtn" img_style="mediumImg" data={headerIconData[2]} />
                 </Div>
-                <ImgBtn btn_style="headerMicBtn" img_style="mediumImg" data={popUpMenuValue=="mic" ? headerIconData[4] :headerIconData[3]} />
+                <ImgBtn btn_style="headerMicBtn" img_style="mediumImg" data={popUpMenuValue=="mic" ? headerIconData[4] :headerIconData[3]}/>
+                {popUpMenuValue=="mic" && <MicPopUpMenu/>}
             </Div>
 
             <HeadMenuBtnContainerDiv width="200px" flex_style="flexSpaceAround">
