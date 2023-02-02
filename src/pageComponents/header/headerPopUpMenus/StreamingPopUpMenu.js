@@ -2,17 +2,16 @@ import React from "react"
 import styled,{ css }  from "styled-components"
 
 //import component
-import ImgTextBtn from "../../components/ImgTextBtn"
+import ImgTextBtn from "../../../components/ImgTextBtn"
 
 //import style 
 import {Div} from "../../../styles/Div"
 
-// const PopUpMenu= styled.div`
-   
-//     ${(p) => p.popUpMenuStyle}
-
-//     width="800px" height="500px" border_radius="20px" background_color="#3d3d3d" position="absolute" flex_direction="column" flex_style="flexRightCenter" 
-// `
+const StreamingPopUpMenuDiv= styled(Div)`
+    top :50px;  
+`
+// //     width="800px" height="500px" border_radius="20px" background_color="#3d3d3d" position="absolute" flex_direction="column" flex_style="flexRightCenter" 
+// // `
 // const POPUPMENU = {
 //     streaming : css`
 //     width : 250px;
@@ -38,10 +37,10 @@ const StreamingPopUpMenu=()=>{
     ]
 
     return (
-        <Div width="250px" height="120px" border_radius="20px" background_color="#3d3d3d" position="absolute" flex_direction="column" flex_style="flexLeftCenter">
-            <ImgTextBtn position="HeadPopUpMenu" imgPosition="HeadPopUpMenu" pPosition="HeadPopUpMenu" data={headmenuPopUpMenuData[0]}/>
-            <ImgTextBtn position="HeadPopUpMenu" imgPosition="HeadPopUpMenu" pPosition="HeadPopUpMenu" data={headmenuPopUpMenuData[1]}/>
-        </Div>
+        <StreamingPopUpMenuDiv width="250px" height="130px" border_radius="20px" background_color="#3d3d3d" position="absolute" flex_direction="column" flex_style="flexCenter">
+            <ImgTextBtn btn_style="HeadPopUpMenu" img_style="mediumImg" p_style="mediumP" data={BtnData[0]}/>
+            <ImgTextBtn btn_style="HeadPopUpMenu" img_style="mediumImg" p_style="mediumP" data={BtnData[1]}/>
+        </StreamingPopUpMenuDiv>
     )
 }
 

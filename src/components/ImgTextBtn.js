@@ -10,6 +10,20 @@ import {P} from "../styles/P"
 
 const BTN_STYLE= {
 
+//======Header Popup Button======//
+
+    HeadPopUpMenu : css`
+        width: 100%;
+        height: 50px;
+        background-color: #3d3d3d;
+        flex-direction: row;
+        align-items: center;
+
+        &:hover {
+            background-color: #6d6d6d;
+          }
+    `,
+
 //======Nav Button======//
 
     navSimpleBtn : css`

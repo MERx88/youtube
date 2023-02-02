@@ -3,10 +3,10 @@ import styled from "styled-components"
 import {useRecoilState,useSetRecoilState} from "recoil"
 
 //import component
-// import MicPopUpMenu from "../../pageComponents/header/headerPopUpMenus/MicPopUpMenu"
-// import StreamingPopUpMenu from "../../pageComponents/header/headerPopUpMenus/StreamingPopUpMenu"
-// import AlarmPopUpMenu from "../../pageComponents/header/headerPopUpMenus/AlarmPopUpMenu"
-// import ProfilePopUpMenu from "../../pageComponents/header/headerPopUpMenus/ProfilePopUpMenu"
+import MicPopUpMenu from "../../pageComponents/header/headerPopUpMenus/MicPopUpMenu"
+import StreamingPopUpMenu from "../../pageComponents/header/headerPopUpMenus/StreamingPopUpMenu"
+import AlarmPopUpMenu from "../../pageComponents/header/headerPopUpMenus/AlarmPopUpMenu"
+import ProfilePopUpMenu from "../../pageComponents/header/headerPopUpMenus/ProfilePopUpMenu"
 import ImgBtn from "../../components/ImgBtn"
 
 //import recoil state 
@@ -48,12 +48,21 @@ const Header=()=>{
             "img":"/img/mic.png",
         },
         {   "id":"4",
-            "img":"/img/profileSectionBtnIcon0.png",
+            "img":"/img/micFill.png",
         },
         {   "id":"5",
-            "img":"/img/profileSectionBtnIcon1.png",
+            "img":"/img/profileSectionBtnIcon0.png"
         },
         {   "id":"6",
+            "img":"/img/streamingFill.png",
+        },
+        {   "id":"7",
+            "img":"/img/profileSectionBtnIcon1.png",
+        },
+        {   "id":"8",
+            "img":"/img/bellFill.png",
+        },
+        {   "id":"9",
             "img":"/img/profileSectionBtnIcon2.png",
         }
     ]
@@ -82,28 +91,26 @@ const Header=()=>{
             case "2":
                 break
             case "3":
+            case "4":
                 popUpMenuValue == null ? setPopUpMenuState("mic") : setPopUpMenuState(null)
                 break
-            case "4":
+            case "5":
+            case "6":
                 popUpMenuValue == null ? setPopUpMenuState("streaming") : setPopUpMenuState(null)
                 break
-            case "5":
+            case "7":
+            case "8":
                 popUpMenuValue == null ? setPopUpMenuState("alarm") : setPopUpMenuState(null)
                 break
-            case "6":
+            case "9":
                 popUpMenuValue == null ? setPopUpMenuState("profile") : setPopUpMenuState(null)
                 break
         }
     }
 
     return (
-        <React.Fragment>
-        <PopUpMenuContainerDiv width="100%" height="0px" position="fixed">
-                {popUpMenuValue=="mic" && <MicPopUpMenu/>}
-                {popUpMenuValue=="streaming" && <StreamingPopUpMenu/>}
-                {popUpMenuValue=="alarm" && <AlarmPopUpMenu/>}
-                {popUpMenuValue=="profile" && <ProfilePopUpMenu/>}
-        </PopUpMenuContainerDiv>
+    <React.Fragment>
+        {/* {popUpMenuValue=="mic" && <MicPopUpMenu/>} */}
         <HeaderDiv width="100%" height="70px" background_color="#181818" position="fixed" flex_style="flexSpaceBetween" onClick={headMenuBtnEvent}>
             <HeadMenuBtnContainerDiv width="200px" margin_left="13px" flex_style="flexSpaceAround">
                 <ImgBtn btn_style="headerBtn" img_style="mediumImg" data={headerIconData[0]}/>
@@ -115,16 +122,27 @@ const Header=()=>{
                     <Input width="80%" height="25px" margin_right="12%" color="white" font_size="15px" background_color="#181818" type="text" placeholder="검색"/>
                     <ImgBtn btn_style="headerSearchBtn" img_style="mediumImg" data={headerIconData[2]} />
                 </Div>
-                <ImgBtn btn_style="headerMicBtn" img_style="mediumImg" data={headerIconData[3]} />
+                <ImgBtn btn_style="headerMicBtn" img_style="mediumImg" data={popUpMenuValue=="mic" ? headerIconData[4] :headerIconData[3]} />
             </Div>
-        
+
             <HeadMenuBtnContainerDiv width="200px" flex_style="flexSpaceAround">
-                <ImgBtn btn_style="headerBtn" img_style="mediumImg" data={headerIconData[4]} />
-                <ImgBtn btn_style="headerBtn" img_style="mediumImg" data={headerIconData[5]}/>
-                <ImgBtn btn_style="headerBtn" img_style="largeCircleImg" data={headerIconData[6]} />
+                <Div position="relative" flex_style="flexRightCenter">
+                    <ImgBtn btn_style="headerBtn" img_style="mediumImg" data={popUpMenuValue=="streaming" ? headerIconData[6] : headerIconData[5]}/>
+                    {popUpMenuValue=="streaming" && <StreamingPopUpMenu/>}
+                </Div>
+                <Div position="relative" flex_style="flexRightCenter">
+                    <ImgBtn btn_style="headerBtn" img_style="mediumImg" data={popUpMenuValue=="alarm" ? headerIconData[8]:headerIconData[7]}/>
+                    {popUpMenuValue=="alarm" && <AlarmPopUpMenu/>}
+                </Div>
+                <Div position="relative" flex_style="flexRightCenter">
+                    <ImgBtn btn_style="headerBtn" img_style="largeCircleImg" data={headerIconData[9]}/> 
+                    {popUpMenuValue=="profile" && <ProfilePopUpMenu/>}
+                </Div>
             </HeadMenuBtnContainerDiv>
+            {/* <PopUpMenuContainerDiv width="100%" height="0px" position="fixed">
+            </PopUpMenuContainerDiv> */}
         </HeaderDiv>
-        </React.Fragment>
+    </React.Fragment>
     )
 }
 

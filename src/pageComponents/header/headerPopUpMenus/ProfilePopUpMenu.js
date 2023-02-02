@@ -1,9 +1,13 @@
 import React from "react"
 import styled,{ css }  from "styled-components"
 
+//import component
+import ImgTextBtn from "../../../components/ImgTextBtn"
+
 //import style 
 import {Div} from "../../../styles/Div"
-import {CircleImg} from "../../styles/Img"
+import {CircleImg} from "../../../styles/Img"
+import {P} from "../../../styles/P"
 
 // const PopUpMenu= styled.div`
    
@@ -20,6 +24,10 @@ import {CircleImg} from "../../styles/Img"
 //     }
 
 //======style======//
+
+const ProfilePopUpMenuDiv= styled(Div)`
+    top :50px;  
+`
 
 const ProfilePopUpMenuHeaderDiv = styled(Div)`
     padding-bottom :10px;
@@ -46,9 +54,9 @@ const ProfilePopUpMenu=()=>{
     ]
 
     return (
-        <Div width="300px" height="200px" border_radius="20px" background_color="#3d3d3d" position="absolute" flex_direction="column" flex_style="flexLeftCenter">
-            <ProfilePopUpMenuHeaderDiv width="93%" height="180px" margin_top="10px" margin_bottom="16px" flex_style="flexCenter">
-                <CircleImg height="45px" src={headmenuPopUpMenuData[0].img}/>
+        <ProfilePopUpMenuDiv width="300px" height="200px"  border_radius="20px" background_color="#3d3d3d" position="absolute" flex_direction="column" flex_style="flexLeftCenter">
+            <ProfilePopUpMenuHeaderDiv width="93%" height="200px" margin_top="10px" margin_bottom="16px" flex_style="flexCenter">
+                <CircleImg height="45px" src={BtnData[0].img}/>
                 <Div width="75%" hegiht="100%" margin_left="20px" flex_direction="column">
                     <P font_size="medium">
                         장승훈
@@ -58,9 +66,11 @@ const ProfilePopUpMenu=()=>{
                     </P>
                 </Div>
             </ProfilePopUpMenuHeaderDiv>
-            <ImgTextBtn position="HeadPopUpMenu" imgPosition="HeadPopUpMenu" pPosition="HeadPopUpMenu" data={headmenuPopUpMenuData[1]}/>
-            <ImgTextBtn position="HeadPopUpMenu" imgPosition="HeadPopUpMenu" pPosition="HeadPopUpMenu" data={headmenuPopUpMenuData[2]}/>
-        </Div>
+            <Div width="100%" margin_bottom="20px" flex_direction="column">
+            <ImgTextBtn btn_style="HeadPopUpMenu" img_style="mediumImg" p_style="mediumP" data={BtnData[1]}/>
+            <ImgTextBtn btn_style="HeadPopUpMenu" img_style="mediumImg" p_style="mediumP" data={BtnData[2]}/>
+            </Div>
+        </ProfilePopUpMenuDiv>
     )
 }
 

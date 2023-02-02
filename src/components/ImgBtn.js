@@ -60,8 +60,8 @@ const BTN_STYLE= {
         }
     `,
     headerPopUpMicBtn : css`
-        width: 45px;
-        height: 45px;
+        width: 100px;
+        height: 100px;
         border-radius: 50%;
         background-color: #3d3d3d;
 
@@ -105,7 +105,7 @@ const IMG_STYLE= {
         height: 27px;
     `,
     extraLargeImg : css`
-        height: 50px;
+        height: 40px;
     `,
 
 //======CircleImg======//
@@ -148,29 +148,3 @@ const ImgBtn=(props)=>{
 
 export default ImgBtn
 
-
-  
-// const IMG_POSITIONS = {
-//     HeadMenu : css`
-//         height: 19px;
-//     `,
-//     HeadLogo : css`
-//         height: 25px;
-//     `,
-//     HeadPopUpMenu : css`
-//         height: 19px;
-//     `,
-//     HeadPopUpMicMenu : css`
-//         height: 50px;
-//     `,
-//     ProfileMenu : css`
-//         height: 45px;
-//         border-radius: 50%;
-//     `,
-//     VideoMenu : css`
-//         height: 15px;
-//     `,
-//     CommentMenu : css`
-//         height: 18px;
-//     `,
-// };
