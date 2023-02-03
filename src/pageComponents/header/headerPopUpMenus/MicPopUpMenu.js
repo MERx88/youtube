@@ -22,7 +22,7 @@ const MicPopUpMenuBtnDiv= styled(Div)`
 
 const MicPopUpMenu=()=>{
 
-    const BtnData=[
+    const btnData=[
         {   "id":"0",
             "img":"/img/cross.png",
         },
@@ -39,10 +39,10 @@ const MicPopUpMenu=()=>{
         const target=event.target.id
 
         switch(target){
-            case "0":
+            case "micPopUpMenuBtnId_0":
                 setPopUpMenuState(null)
                 break
-            case "1":
+            case "micPopUpMenuBtnId_1":
                 break
         }
     }
@@ -50,14 +50,14 @@ const MicPopUpMenu=()=>{
     return (
         <MicPopUpMenuBtnDiv width="800px" height="500px" border_radius="20px" background_color="#3d3d3d" position="absolute" flex_direction="column" flex_style="flexLeftCenter" onClick={micPopUpMenuBtnEvent}>
             <Div width="92%" height="100px" margin_top="10px" flex_style="flexRightCenter">
-                <ImgBtn btn_style="headerPopUpBtn" img_style="mediumImg" data={BtnData[0]}/>
+                <ImgBtn id="micPopUpMenuBtnId_0" shape="circle" color="gray" size="medium" data={btnData[0]}/>
             </Div>
             <Div width="92%" height="150px" margin_top="10px" margin_bottom="230px" flex_direction="column">
                 <H1 font_size="extraLarge" >음성으로 검색</H1>
                 <P font_size="medium" margin_top="10px">음성으로 검색하려면 브라우저 설정으로 이동해 마이크에 대한 액세스를 허용하세요.</P>
             </Div>
             <Div margin_bottom="20px">
-            <ImgBtn btn_style="headerPopUpMicBtn" img_style="extraLargeImg" data={BtnData[1]}/>
+            <ImgBtn id="micPopUpMenuBtnId_1" shape="circle" color="gray" size="large" data={btnData[1]}/>
             </Div>
         </MicPopUpMenuBtnDiv>
     )

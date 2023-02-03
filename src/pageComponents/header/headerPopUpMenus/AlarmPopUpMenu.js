@@ -34,7 +34,7 @@ const AlarmPopUpMenuBodyDiv = styled(Div)`
 
 const AlarmPopUpMenu=()=>{
 
-    const BtnData=[
+    const btnData=[
         {   "id":"0",
             "img":"/img/settings.png"
         }
@@ -46,7 +46,7 @@ const AlarmPopUpMenu=()=>{
                 <H1 font_size="small" >
                     알림
                 </H1>
-                <ImgBtn btn_style="headerPopUpBtn" img_style="mediumImg" data={BtnData[0]}/>
+                <ImgBtn id="alarmPopUpMenuBtnId_0" shape="circle" color="gray" size="medium" data={btnData[0]}/>
             </Div>
             <AlarmPopUpMenuBodyDiv width="100%" height="100%">
                 {/* {

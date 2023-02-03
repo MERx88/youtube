@@ -11,7 +11,7 @@ export const ImgButton = styled.button`
     flex-direction: row;
 
     width: ${(props) => 
-        props.shape == ("circle" || "roundSquare")
+        props.shape == ("circle" ||"round")
         ? props.size =="small" 
             ? `25px`
             : props.size =="medium"
@@ -35,7 +35,7 @@ export const ImgButton = styled.button`
 
     border-radius: 
     ${(props) => 
-        props.shape == ("round" || "roundSquare")
+        props.shape == "round"
         ? `1em`
         : props.shape =="circle"
         ? `50%`

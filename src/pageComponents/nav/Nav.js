@@ -4,7 +4,6 @@ import {useRecoilValue, useSetRecoilState, useRecoilState} from "recoil"
 
 //import component
 import ImgTextBtn from "../../components/ImgTextBtn"
-import TestBtn from "../../components/TestBtn"
 
 //import recoil state 
 import {sideMenuOpenState, mainState} from "../../recoil/HeaderNavState"
@@ -72,14 +71,13 @@ const Nav=()=>{
     return (
         sideMenuOpenValue
         ?   
-            null
-            // <NavDetailDiv width="240px" height="1500px" margin_top="83px" flex_direction="column" position="fixed" background_color="#181818" onClick={sideMenuBtnEvent}>
-            // {
-            //     navIconData.map((value, index)=>{
-            //         return <TestBtn id={index} shape="roundSquare" color="black" size="medium" flex_direction="column" data={value}/>
-            //     })
-            // }  
-            // </NavDetailDiv>
+            <NavDetailDiv width="240px" height="1500px" margin_top="83px" flex_direction="column" position="fixed" background_color="#181818" onClick={sideMenuBtnEvent}>
+            {
+                navIconData.map((value, index)=>{
+                    return <ImgTextBtn id={index} shape="round" color="black" size="small" flex_direction="row" flex_style="flexLeftCenter" data={value}/>
+                })
+            }  
+            </NavDetailDiv>
         :
             isNarrow
             &&
@@ -92,7 +90,7 @@ const Nav=()=>{
                         <Div width="80px" margin_top="70px" flex_direction="column" position="fixed" background_color="#181818" onClick={sideMenuBtnEvent}>
                             {
                                 navIconData.map((value, index)=>{
-                                    return <TestBtn id={index} shape="roundSquare" color="black" size="medium" flex_direction="column" data={value}/>
+                                    return <ImgTextBtn id={index} shape="round" color="black" size="medium" flex_direction="column" flex_style="flexCenter" data={value}/>
                                 })
                             }  
                         </Div>

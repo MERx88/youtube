@@ -1,25 +1,27 @@
 import React from "react"
 
-import styled from "styled-components"
+import styled , {css}from "styled-components"
 
 export const ImgTextButton = styled.button`
     display: flex;
-    align-items: center;
-    justify-content: center;
     border: none;
     cursor: pointer;
+    padding : 10%;
+
     flex-direction: ${(props) => props.flex_direction || `row`};
+
+    ${(props) => FLEX_STYLE[props.flex_style] || "none"}
 
     width: 
     ${(props) => 
-        props.shape =="circle" || "roundSquare"
+        props.shape == "circle"
         ? props.size =="small" 
             ? `30px`
             : props.size =="medium"
             ? `80px`
             : props.size == "large"
             ? `100px`
-            : `70px`
+            : `80px`
         : `auto`
     };
 
@@ -31,12 +33,12 @@ export const ImgTextButton = styled.button`
         ? `80px`
         : props.size == "large"
         ? `100px`
-        : `50px`
+        : `80px`
     };
 
     border-radius: 
     ${(props) => 
-        props.shape =="round" || "roundSquare"
+        props.shape == "round"
         ? `1em`
         : props.shape =="circle"
         ? `50%`
@@ -66,12 +68,29 @@ export const ImgTextButton = styled.button`
         };
 `
 
+//======flex style======//
+
+const FLEX_STYLE = {
+    flexCenter : css`
+        align-items: center;
+        justify-content: center;
+    `,
+    flexLeftCenter : css`
+        align-items: center;
+        justify-content: start;
+    `,
+    flexRightCenter : css`
+        align-items: center;
+        justify-content: end;
+    `
+}
+
 export const Img = styled.img`
     pointer-events: none;
     width: 
     ${(props) => 
         props.size =="small"
-        ? `15px`
+        ? `16px`
         : props.size =="medium"
         ? `19px`
         : props.size == "large"
@@ -81,12 +100,22 @@ export const Img = styled.img`
 `
 
 export const P = styled.p`
+    width: fit-content;
+    height :fit-content;
     pointer-events: none;
     color : white;
+
+    margin-left:
+    ${(props) => 
+        props.flex_direction == (`row` || null)
+        ? "1em" 
+        : null 
+    };
+
     font-size: 
     ${(props) => 
         props.size =="small"
-        ? `10px`
+        ? `12px`
         : props.size =="medium"
         ? `14px`
         : props.size == "large"
@@ -95,17 +124,23 @@ export const P = styled.p`
     };
 `
 
-
 // ========================================== //
 
 const TestBtn=(props)=>{
 
-    const {id, shape, color, size, flex_direction, data, onClick} = props
+    const {id, shape, color, size, flex_direction, flex_style, data, onClick} = props
 
  	return(
-        <ImgTextButton id={id} shape={shape} color={color} size={size} flex_direction={flex_direction} onClick={onClick ? onClick : "null"}>
-            <Img size={size} src={data.img}/>
-            <P size={size}>{data.txt}</P>
+        <ImgTextButton 
+            id={id} 
+            shape={shape} 
+            color={color} 
+            size={size} 
+            flex_direction={flex_direction} 
+            flex_style={flex_style} 
+            onClick={onClick ? onClick : null }>
+                <Img size={size} src={data.img}/>
+                <P size={size} flex_direction={flex_direction}>{data.txt}</P>
         </ImgTextButton>
 	)
 }

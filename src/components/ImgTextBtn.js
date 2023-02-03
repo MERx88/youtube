@@ -1,289 +1,153 @@
-
 import React from "react"
 
-import { css } from "styled-components"
+import styled , {css}from "styled-components"
 
-import {Button} from "../styles/Button"
-import {Img} from "../styles/Img"
-import {P} from "../styles/P"
+export const ImgTextButton = styled.button`
+    display: flex;
+    border: none;
+    cursor: pointer;
+    padding : 10%;
 
+    flex-direction: ${(props) => props.flex_direction || `row`};
 
-const BTN_STYLE= {
+    ${(props) => FLEX_STYLE[props.flex_style] || "none"}
 
-//======Header Popup Button======//
+    width: 
+    ${(props) => 
+        props.shape == "circle"
+        ? props.size =="small" 
+            ? `30px`
+            : props.size =="medium"
+            ? `80px`
+            : props.size == "large"
+            ? `100px`
+            : `80px`
+        : `auto`
+    };
 
-    HeadPopUpMenu : css`
-        width: 100%;
-        height: 50px;
-        background-color: #3d3d3d;
-        flex-direction: row;
+    height: 
+    ${(props) => 
+        props.size =="small"
+        ? `30px`
+        : props.size =="medium"
+        ? `80px`
+        : props.size == "large"
+        ? `100px`
+        : `80px`
+    };
+
+    border-radius: 
+    ${(props) => 
+        props.shape == "round"
+        ? `1em`
+        : props.shape =="circle"
+        ? `50%`
+        : `none`
+    };
+
+    background-color: 
+    ${(props) => 
+        props.color =="black"
+        ? `#181818`
+        : props.color =="darkGray"
+        ? `#212121`
+        : props.color =="gray"
+        ? `#3d3d3d`
+        : `#181818`
+    };
+    
+    &:hover {
+        background-color: ${(props) => 
+            props.color =="black"
+            ? `#3d3d3d`
+            : props.color =="darkGray"
+            ? `#6d6d6d`
+            : props.color =="gray"
+            ? `#6d6d6d`
+            : `none`
+        };
+`
+
+//======flex style======//
+
+const FLEX_STYLE = {
+    flexCenter : css`
         align-items: center;
-
-        &:hover {
-            background-color: #6d6d6d;
-          }
-    `,
-
-//======Nav Button======//
-
-    navSimpleBtn : css`
-        width: 95%;
-        height: 80px;
-        padding-top: 20px;
-        border-radius:15px;
-        background-color: #181818;
-        flex-direction: column;
-        align-items: center;
-
-        &:hover {
-            background-color: #3d3d3d;
-        }
-    `,
-    navDetailBtn : css`
-        width: 95%;
-        height: 45px;
-        border-radius:10px;
-        background-color: #181818;
-        flex-direction: row;
-        align-items: center;
-
-        &:hover {
-            background-color: #3d3d3d;
-        }
-    `,
-
-//======Home Content Button ======//
-
-    homeContentExpansionBtn  : css`
-        width:48%;
-        height:40px;
-        background-color: #656565;
         justify-content: center;
-        align-items: center;
-        border-radius: 25px;
     `,
-
-//======video Button ======//
-
-    videoMenuBtn : css`
-        height: 40px;
-        padding :15px;
-        flex-direction: row;
-        justify-content: space-around;
+    flexLeftCenter : css`
         align-items: center;
-        border-radius: 50px;
-        background-color:#3d3d3d ;
+        justify-content: start;
     `,
-
-//======Comment List Button ======//
-
-    CommentListSortBtn  : css`
-        width: 100px;
-        height: 30px;
-        font-size: 14px;
-        color: #b1b1b1;
-        background-color: #181818;
-        flex-direction: row;
+    flexRightCenter : css`
         align-items: center;
-        justify-content: space-around;
+        justify-content: end;
     `
-
 }
 
-const IMG_STYLE= {
+export const Img = styled.img`
+    pointer-events: none;
+    width: 
+    ${(props) => 
+        props.size =="small"
+        ? `16px`
+        : props.size =="medium"
+        ? `19px`
+        : props.size == "large"
+        ? `40px`
+        : `19px`
+    };
+`
 
-    extraSmallImg : css`
-        height: 15px;
-    `,
-    smallImg : css`
-        height: 17px;
-    `,
-    mediumImg : css`
-        height: 19px;
-    `,
-    largeImg : css`
-        height: 45px;
-    `,
-    extraLargeImg : css`
-        height: 50px;
-    `
-};
+export const P = styled.p`
+    width: fit-content;
+    height :fit-content;
+    pointer-events: none;
+    color : white;
 
-const P_STYLE= {
+    margin-left:
+    ${(props) => 
+        props.flex_direction == (`row` || null)
+        ? "1em" 
+        : null 
+    };
 
-    extraSmallP : css`
-        font-size: 10px;
-    `,
-    smallP : css`
-        font-size: 13px;
-    `,
-    mediumP : css`
-        font-size: 16px;
-    `,
-    largeP : css`
-        font-size: 19px;
-    `,
-    extraLargeP : css`
-        font-size: 22px;
-    `
-};
-
+    font-size: 
+    ${(props) => 
+        props.size =="small"
+        ? `12px`
+        : props.size =="medium"
+        ? `14px`
+        : props.size == "large"
+        ? `18px`
+        : `14px`
+    };
+`
 
 // ========================================== //
 
 const ImgTextBtn=(props)=>{
-    const {btn_style, img_style, p_style, data} = props
-    const btnStyle = BTN_STYLE[btn_style];
-    const imgStyle = IMG_STYLE[img_style];
-    const pStyle = P_STYLE[p_style];
+
+    const {id, shape, color, size, flex_direction, flex_style, data, onClick} = props
+
  	return(
-        <Button id={data.id} btnStyle={btnStyle}>
-            <Img imgStyle={imgStyle} src={data.img}/>
-            <P pStyle={pStyle}>{data.txt}</P>
-        </Button>
+        <ImgTextButton 
+            id={id} 
+            shape={shape} 
+            color={color} 
+            size={size} 
+            flex_direction={flex_direction} 
+            flex_style={flex_style} 
+            onClick={onClick ? onClick : null }>
+                <Img size={size} src={data.img}/>
+                <P size={size} flex_direction={flex_direction}>{data.txt}</P>
+        </ImgTextButton>
 	)
 }
 
 export default ImgTextBtn
 
-// const ImgTextButton = styled.button`
 
-//     ${(p) => p.positionStyle}
 
-//     border: none;
-//     display : flex;
-//     cursor: pointer;
-// `
-// const POSITIONS = {
-//     HeadPopUpMenu : css`
-//         width: 100%;
-//         height: 50px;
-//         background-color: #3d3d3d;
-//         flex-direction: row;
-//         align-items: center;
 
-//         &:hover {
-//             background-color: #6d6d6d;
-//           }
-//     `,
-//     SideMenuSimple : css`
-//         width: 95%;
-//         height: 80px;
-//         padding-top: 20px;
-//         border-radius:15px;
-//         background-color: #181818;
-//         flex-direction: column;
-//         align-items: center;
 
-//         &:hover {
-//             background-color: #3d3d3d;
-//           }
-//     `,
-//     SideMenuDetail : css`
-//         width: 95%;
-//         height: 45px;
-//         border-radius:10px;
-//         background-color: #181818;
-//         flex-direction: row;
-//         align-items: center;
-
-//         &:hover {
-//             background-color: #3d3d3d;
-//           }
-//     `,
-//     HomeContentExpansion : css`
-//         width:48%;
-//         height:40px;
-//         background-color: #656565;
-//         justify-content: center;
-//         align-items: center;
-//         border-radius: 25px;
-//     `,
-//     VideoMenu : css`
-//         height: 40px;
-//         padding :15px;
-//         flex-direction: row;
-//         justify-content: space-around;
-//         align-items: center;
-//         border-radius: 50px;
-//         background-color:#3d3d3d ;
-//     `,
-//     CommentListSort : css`
-//         width: 100px;
-//         height: 30px;
-//         font-size: 14px;
-//         color: #b1b1b1;
-//         background-color: #181818;
-//         flex-direction: row;
-//         align-items: center;
-//         justify-content: space-around;
-//     `
-// };
-
-// // ========================================== //
-
-// const ButtonImg = styled.img`
-
-//     ${(p) => p.imgPositionStyle}
-//     pointer-events: none;
-// `
-// const IMG_POSITIONS = {
-//     HeadPopUpMenu : css`
-//         width: 18px;
-//         margin-left: 22px;
-//         margin-right: 22px;
-//     `,
-//     SideMenuSimple : css`
-//         width: 18px;
-//     `,
-//     SideMenuDetail : css`
-//         width: 18px;
-//         margin-left: 22px;
-//     `,
-//     HomeContentExpansion : css`
-//         height : 17px;
-//         margin-right: 10px;
-//     `,
-//     VideoMenu : css`
-//         height: 18px;
-//     `,
-//     CommentListSort : css`
-//         height: 13px;
-//     `,
-// };
-
-// // ========================================== //
-
-// const ButtonP = styled.p`
-
-//     ${(p) => p.pPositionStyle}
-    
-//     color: white;
-//     pointer-events: none;
-// `
-// const P_POSITIONS = {
-//     HeadPopUpMenu : css`
-//         font-size: 15px;
-//     `,
-//     SideMenuSimple : css`
-//         font-size: 10px;
-//     `,
-//     SideMenuDetail : css`
-//         margin-left: 20px;
-//         font-size: 15px;
-//         font-weight: 200;
-//     `,
-//     HomeContentExpansion : css`
-//         color: white;
-//         font-weight: 400;
-//         font-size: 12px;
-//     `,
-//     VideoMenu : css`
-//         margin-left: 10px;
-//         font-size: 13px;
-//     `,
-//     CommentListSort : css`
-//         margin-left: 5px;
-//         font-size: 13px;
-//     `,
-// };
