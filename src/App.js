@@ -13,7 +13,7 @@ const App=()=>{
             <GlobalStyle/>
             <Header/>
             <Nav/>
-            <Main/>
+            {/* <Main/> */}
         </React.Fragment>
     )
 }

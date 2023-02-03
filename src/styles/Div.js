@@ -15,6 +15,29 @@ export const Div = styled.div`
     background-color: ${(props) => props.background_color || `none`};
 
     ${(props) => FLEX_STYLE[props.flex_style] || "none"}
+
+`
+    // ${(props) => 
+    //     {
+    //         if(props.position=="absolute"){
+    //             return(
+    //                 `top : ${(props) => props.top || `auto`};
+    //                     bottom : ${(props) => props.bottom || `auto`};
+    //                     right : ${(props) => props.right || `auto`};
+    //                     left : ${(props) => props.left || `auto`};
+    //                 `
+    //             )
+    //         }else {return(null)}
+    //     }
+    // }
+
+  
+export const AbsoluteDiv = styled(Div)`
+    position: absolute;
+    top : ${(props) => props.top || `auto`};
+    bottom : ${(props) => props.bottom || `auto`};
+    right : ${(props) => props.right || `auto`};
+    left : ${(props) => props.left || `auto`};
 `
 
 export const CusorDiv = styled(Div)`
@@ -26,6 +49,8 @@ export const CusorDiv = styled(Div)`
 export const NoneEventsDiv = styled(Div)`
     pointer-events: none;
 `
+
+
 //======flex style======//
 
 const FLEX_STYLE = {

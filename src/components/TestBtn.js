@@ -2,32 +2,33 @@ import React from "react"
 
 import styled from "styled-components"
 
-export const ImgButton = styled.button`
+export const ImgTextButton = styled.button`
     display: flex;
     align-items: center;
     justify-content: center;
     border: none;
     cursor: pointer;
-    flex-direction: row;
+    flex-direction: ${(props) => props.flex_direction || `row`};
 
-    width: ${(props) => 
-        props.shape == ("circle" || "roundSquare")
+    width: 
+    ${(props) => 
+        props.shape =="circle" || "roundSquare"
         ? props.size =="small" 
-            ? `25px`
+            ? `30px`
             : props.size =="medium"
-            ? `50px`
+            ? `80px`
             : props.size == "large"
             ? `100px`
-            : `50px`
+            : `70px`
         : `auto`
     };
 
     height: 
     ${(props) => 
         props.size =="small"
-        ? `25px`
+        ? `30px`
         : props.size =="medium"
-        ? `50px`
+        ? `80px`
         : props.size == "large"
         ? `100px`
         : `50px`
@@ -35,7 +36,7 @@ export const ImgButton = styled.button`
 
     border-radius: 
     ${(props) => 
-        props.shape == ("round" || "roundSquare")
+        props.shape =="round" || "roundSquare"
         ? `1em`
         : props.shape =="circle"
         ? `50%`
@@ -67,32 +68,47 @@ export const ImgButton = styled.button`
 
 export const Img = styled.img`
     pointer-events: none;
+    width: 
+    ${(props) => 
+        props.size =="small"
+        ? `15px`
+        : props.size =="medium"
+        ? `19px`
+        : props.size == "large"
+        ? `40px`
+        : `19px`
+    };
+`
 
-    height: 
+export const P = styled.p`
+    pointer-events: none;
+    color : white;
+    font-size: 
     ${(props) => 
         props.size =="small"
         ? `10px`
         : props.size =="medium"
-        ? `22px`
+        ? `14px`
         : props.size == "large"
-        ? `50px`
-        : `20px`
+        ? `18px`
+        : `14px`
     };
 `
 
 
 // ========================================== //
 
-const ImgBtn=(props)=>{
+const TestBtn=(props)=>{
 
-    const {id, shape, color, size, data, onClick} = props
+    const {id, shape, color, size, flex_direction, data, onClick} = props
 
  	return(
-        <ImgButton id={id} shape={shape} color={color} size={size} onClick={onClick}>
+        <ImgTextButton id={id} shape={shape} color={color} size={size} flex_direction={flex_direction} onClick={onClick ? onClick : "null"}>
             <Img size={size} src={data.img}/>
-        </ImgButton>
+            <P size={size}>{data.txt}</P>
+        </ImgTextButton>
 	)
 }
 
-export default ImgBtn
+export default TestBtn
 

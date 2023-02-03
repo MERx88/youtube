@@ -4,6 +4,7 @@ import {useRecoilValue, useSetRecoilState, useRecoilState} from "recoil"
 
 //import component
 import ImgTextBtn from "../../components/ImgTextBtn"
+import TestBtn from "../../components/TestBtn"
 
 //import recoil state 
 import {sideMenuOpenState, mainState} from "../../recoil/HeaderNavState"
@@ -70,14 +71,15 @@ const Nav=()=>{
 
     return (
         sideMenuOpenValue
-        ?
-            <NavDetailDiv width="240px" height="1500px" margin_top="83px" flex_direction="column" position="fixed" background_color="#181818" onClick={sideMenuBtnEvent}>
-            {
-                navIconData.map((value)=>{
-                    return <ImgTextBtn btn_style="navDetailBtn" img_style="mediumImg" p_style="mediumP" data={value}/>
-                })
-            }  
-            </NavDetailDiv>
+        ?   
+            null
+            // <NavDetailDiv width="240px" height="1500px" margin_top="83px" flex_direction="column" position="fixed" background_color="#181818" onClick={sideMenuBtnEvent}>
+            // {
+            //     navIconData.map((value, index)=>{
+            //         return <TestBtn id={index} shape="roundSquare" color="black" size="medium" flex_direction="column" data={value}/>
+            //     })
+            // }  
+            // </NavDetailDiv>
         :
             isNarrow
             &&
@@ -85,17 +87,16 @@ const Nav=()=>{
                 {
                     videoPageValue =="video" && null
                 }
-                {/* {
+                {
                     videoPageValue =="main" && 
                         <Div width="80px" margin_top="70px" flex_direction="column" position="fixed" background_color="#181818" onClick={sideMenuBtnEvent}>
                             {
-                                navIconData.map((value)=>{
-                                    return <ImgTextBtn btn_style="navSimpleBtn" img_style="mediumImg" p_style="extraSmallP" data={value}/>
-                                    
+                                navIconData.map((value, index)=>{
+                                    return <TestBtn id={index} shape="roundSquare" color="black" size="medium" flex_direction="column" data={value}/>
                                 })
                             }  
                         </Div>
-                } */}
+                }
             </React.Fragment>
     )
 }
