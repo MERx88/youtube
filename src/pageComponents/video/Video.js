@@ -3,7 +3,7 @@ import styled from "styled-components"
 import {useSetRecoilState} from "recoil"
 
 //import component
-import VideoBtnInfo from "./VideoBtnInfo"
+import VideoBtnBox from "./VideoBtnBox"
 import VideoInfoBox from "./VideoInfoBox"
 import RecommandVideoList from "./RecommandVideoList"
 import CommentList from "./CommentList"
@@ -166,10 +166,10 @@ const Video=()=>{
                     <video  width="100%" autoplay controls>
                         <source src={videoData[0].video} type="video/mp4"/>
                     </video>
-                    <H1  margin_top="10px" font_size="large">
+                    <H1 font_size="large" margin_top="10px">
                         {videoData[0].videoTitle}
                     </H1>
-                    <VideoBtnInfo/>
+                    <VideoBtnBox/>
                     <VideoInfoBox/>
                 </Div>
                 {/* {isNomal ? null : <RecommandVideoList/>} */}

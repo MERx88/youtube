@@ -8,18 +8,6 @@ import ImgBtn from "../../../components/ImgBtn"
 import {Div} from "../../../styles/Div"
 import {H1} from "../../../styles/H1"
 
-// const PopUpMenu= styled.div`
-   
-//     ${(p) => p.popUpMenuStyle}
-
-//     width="800px" height="500px" border_radius="20px" background_color="#3d3d3d" position="absolute" flex_direction="column" flex_style="flexRightCenter" 
-// `
-// const POPUPMENU = {
-//      alarm : css`
-// top :65px;
-// right : 60px; 
-// `,
-
 //======style======//
 
 const AlarmPopUpMenuDiv= styled(Div)`

@@ -15,7 +15,7 @@ import {popUpMenuState} from "../../recoil/HomeState"
 
 //import style 
 import {Div, AbsoluteDiv} from "../../styles/Div"
-import {Img} from "../../styles/Img"
+import {Img,CircleImg} from "../../styles/Img"
 import {Input} from "../../styles/Input"
 import {useMaxNarrow} from "../../hooks/useMedia"
 
@@ -143,7 +143,7 @@ const Header=()=>{
                     {popUpMenuValue=="alarm" && <AlarmPopUpMenu/>}
                 </Div>
                 <Div position="relative" flex_style="flexRightCenter">
-                    <ImgBtn id="headerBtnId_6" shape="circle" color="black" size="medium" data={headerBtnData[9]}/> 
+                    <CircleImg width="40px" src={headerBtnData[9].img}/> 
                     {popUpMenuValue=="profile" && <ProfilePopUpMenu/>}
                 </Div>
             </HeadMenuBtnContainerDiv>

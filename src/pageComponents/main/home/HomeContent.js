@@ -74,10 +74,10 @@ const HomeContent=(props)=>{
         const target=event.target.id
 
         switch(target){
-            case "0":
+            case "homeContentExpansionBtnId_0":
                 setVideoPageState("video") 
                 break
-            case "1":
+            case "homeContentExpansionBtnId_1":
                 break
         }
     }
@@ -90,12 +90,14 @@ const HomeContent=(props)=>{
                 {
                     isMouseOver
                     ? <MouseOverDiv width="110px" height="19px" background_color="#181818" position="absolute" border_radius="3px" flex_style="flexCenter">
-                            <P font_size="medium" color="#3d3d3d" >
+                            <P font_size="small" color="white" >
                                 클릭하여 재생하기
                             </P>
                       </MouseOverDiv>
                     : <MouseOverDiv width="110px" height="19px" background_color="#181818" position="absolute" border_radius="3px" flex_style="flexCenter">
-                        {contentDataValue[index].contentRuntime}
+                        <P font_size="small" color="white" >
+                            {contentDataValue[index].contentRuntime}
+                        </P>
                       </MouseOverDiv>
                 }
                 </NoneEventsDiv>
@@ -108,11 +110,11 @@ const HomeContent=(props)=>{
                         : null
                     }
                     <Div width="70%" margin_left="10px" flex_direction="column">
-                        <H1 font_size="small" >{contentDataValue[index].contentTitle}</H1>
-                        <P font_size="medium" color="#3d3d3d">{contentDataValue[index].channelTitle}</P>
+                        <H1 font_size="small" font_weight="bold">{contentDataValue[index].contentTitle}</H1>
+                        <P font_size="medium" color="gray">{contentDataValue[index].channelTitle}</P>
                         <Div width="120px" flex_style="flexSpaceBetween">
-                            <P font_size="medium" color="#3d3d3d">{contentDataValue[index].contentView}</P>
-                            <P font_size="medium" color="#3d3d3d">{contentDataValue[index].contentUploadDate}</P>
+                            <P font_size="medium" color="gray">{contentDataValue[index].contentView}</P>
+                            <P font_size="medium" color="gray">{contentDataValue[index].contentUploadDate}</P>
                         </Div>
                     </Div>
                 </NoneEventsDiv>

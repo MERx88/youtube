@@ -26,10 +26,10 @@ const Comment=(props)=>{
             <CircleImg height="45px" src={commentDataValue[index].ProfilImg}/>
             <Div margin_left="10px" flex_direction="column">
                 <Div width="85px" height="25px" margin_top="5px" flex_style="flexSpaceBetween">
-                    <P  font_size="medium">
+                    <P font_size="medium">
                         {commentDataValue[index].commentProfileName}
                     </P>
-                    <P color="#3d3d3d" font_size="medium">
+                    <P color="gray" font_size="medium">
                         {commentDataValue[index].commentUploadDate}
                     </P>
                 </Div>

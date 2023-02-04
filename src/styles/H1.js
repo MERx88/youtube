@@ -7,43 +7,41 @@ export const H1 = styled.h1`
     margin-bottom: ${(props) => props.margin_bottom || `0px`};
     margin-right: ${(props) => props.margin_right|| `0px`};
     margin-left: ${(props) => props.margin_left || `0px`};
-    ${(props) => FONT_WEIGHT[props.font_weight] || "font-weight : 400"};
-    ${(props) => FONT_SIZE[props.font_size] || "font-size : 14px"};
-    color: ${props => props.color || "white"};
+
+    font-size:
+    ${(props) => 
+        props.font_size =="extraSmall"
+        ? `13px`
+        : props.font_size =="small"
+        ? `16px`
+        : props.font_size =="medium"
+        ? `19px`
+        : props.font_size =="large"
+        ? `22px`
+        : props.font_size =="extraLarge"
+        ? `25px`
+        : `19px`
+    };
+
+    font-weight:
+    ${(props) => 
+        props.font_weight =="light"
+        ? `100`
+        : props.font_weight =="medium"
+        ? `300`
+        : props.font_weight =="bold"
+        ? `500`
+        : `500`
+    };
+
+    color: 
+    ${(props) => 
+        props.color =="white"
+        ? `#ffffff`
+        : props.color =="gray"
+        ? `#3d3d3d`
+        : props.color =="black"
+        ? `#181818`
+        : `#ffffff`
+    };
 `
-
-const FONT_SIZE = {
-    extraSmall : css`
-        font-size : 13px;
-    `,
-    small : css`
-        font-size : 16px;
-    `,
-    medium : css`
-        font-size : 19px;
-    `,
-    large : css`
-        font-size : 22px;
-    `,
-    extraLarge : css`
-        font-size : 25px;
-    `
-}
-
-const FONT_WEIGHT = {
-    extraLight : css`
-        font-weight : 100;
-    `,
-    light : css`
-        font-weight : 200;
-    `,
-    regular : css`
-        font-weight : 300;
-    `,
-    bold : css`
-        font-weight : 400;
-    `,
-    extraBold : css`
-        font-weight : 500;
-    `
-}

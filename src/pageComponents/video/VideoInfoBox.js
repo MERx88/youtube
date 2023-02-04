@@ -29,14 +29,14 @@ const VideoInfoBox=()=>{
     return (
         <Div  height={ isInfoBoxExpansion ? "auto" : "100px"} margin_top="10px"  border_radius="15px" background_color="#3d3d3d" flex_direction="column" onClick={infoBoxEvent}>
             <Div margin_top="20px" margin_bottom="5px" margin_left="20px">
-                <P color="white" font_size="medium">
+                <P font_size="medium">
                     {videoDataValue[0]?.videoView}
                 </P>
-                <P color="white" font_size="medium" margin_left="5px">
+                <P font_size="medium" margin_left="5px">
                     {videoDataValue[0]?.videotUploadDate}
                 </P>
             </Div>
-            <P color="white" font_size="medium" margin_left="20px" margin_bottom="20px">
+            <P font_size="medium" margin_left="20px" margin_bottom="20px">
                 {videoDataValue[0]?.videoInfo}
             </P>
         </Div>

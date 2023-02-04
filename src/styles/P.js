@@ -7,43 +7,41 @@ export const P = styled.p`
     margin-bottom: ${(props) => props.margin_bottom || `0px`};
     margin-right: ${(props) => props.margin_right|| `0px`};
     margin-left: ${(props) => props.margin_left || `0px`};
-    ${(props) => FONT_WEIGHT[props.font_weight] || "font-weight : 400"};
-    ${(props) => FONT_SIZE[props.font_size] || "font-size : 14px"};
-    color: ${props => props.color || "white"};
+
+    font-size:
+    ${(props) => 
+        props.font_size =="extraSmall"
+        ? `10px`
+        : props.font_size =="small"
+        ? `12px`
+        : props.font_size =="medium"
+        ? `14px`
+        : props.font_size =="large"
+        ? `16px`
+        : props.font_size =="extraLarge"
+        ? `18px`
+        : `14px`
+    };
+
+    font-weight:
+    ${(props) => 
+        props.font_weight =="light"
+        ? `100`
+        : props.font_weight =="medium"
+        ? `300`
+        : props.font_weight =="bold"
+        ? `500`
+        : `300`
+    };
+
+    color: 
+    ${(props) => 
+        props.color =="white"
+        ? `#ffffff`
+        : props.color =="gray"
+        ? `#3d3d3d`
+        : props.color =="black"
+        ? `#181818`
+        : `#ffffff`
+    };
 `
-
-const FONT_SIZE = {
-    extraSmall : css`
-        font-size : 10px;
-    `,
-    small : css`
-        font-size : 12px;
-    `,
-    medium : css`
-        font-size : 14px;
-    `,
-    large : css`
-        font-size : 16px;
-    `,
-    extraLarge : css`
-        font-size : 18px;
-    `
-}
-
-const FONT_WEIGHT = {
-    extraLight : css`
-        font-weight : 100;
-    `,
-    light : css`
-        font-weight : 200;
-    `,
-    regular : css`
-        font-weight : 300;
-    `,
-    bold : css`
-        font-weight : 400;
-    `,
-    extraBold : css`
-        font-weight : 500;
-    `
-}

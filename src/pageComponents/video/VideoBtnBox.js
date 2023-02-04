@@ -17,7 +17,7 @@ import {useMaxWide, useWide, useNomal} from "../../hooks/useMedia"
 
 //======Component======//
 
-const VideoBtnInfo=()=>{
+const VideoBtnBox=()=>{
     //mediaquery
     let isMaxWide=useMaxWide()
     let isWide=useWide()
@@ -100,10 +100,10 @@ const VideoBtnInfo=()=>{
                 <Div width="250px" height="100%"  margin_top="10px" flex_style="flexSpaceAround">
                     <CircleImg height="45px" src={videoDataValue[0]?.profileImg}/>
                     <Div height="100%"  margin_top="10px" margin_left="5px"  flex_direction="column">
-                        <P font_size="extraLarge">
+                        <P font_size="extraLarge" font_weight="bold" >
                             {videoDataValue[0]?.videoProfileName}
                         </P>
-                        <P color="#3d3d3d" font_size="small">
+                        <P color="gray" font_size="small">
                             구독자 {videoDataValue[0]?.videoProfileSubscriber}
                         </P>
                     </Div>
@@ -123,4 +123,4 @@ const VideoBtnInfo=()=>{
     )
 }
 
-export default VideoBtnInfo
+export default VideoBtnBox

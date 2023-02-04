@@ -56,7 +56,7 @@ const CommentWrite=(props)=>{
             <Div width="100%" height="80px" flex_style="flexLeftCenter">
                 <CircleImg height="45px" src={videoDataValue[0]?.profileImg}/>
                 <CommentClickBeforeDiv  width="100%" height="20px" margin_bottom="5px" margin_left="13px" flex_style="flexLeftCenter">
-                <P color="#3d3d3d" font_size="large" onClick={writeCommentExpansionEvent}>댓글추가...</P>
+                <P color="gray" font_size="large" onClick={writeCommentExpansionEvent}>댓글추가...</P>
                 </CommentClickBeforeDiv>
             </Div>
             {   
