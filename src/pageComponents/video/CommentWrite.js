@@ -18,7 +18,7 @@ import {P} from "../../styles/P"
 //======style======//
 
 const WriteCommentInput = styled(Input)`
-    top : 12px;
+    top : 10px;
     left : 55px;
 `
 const CommentClickBeforeDiv = styled(Div)`
@@ -43,10 +43,10 @@ const CommentWrite=(props)=>{
         const target=event.target.id
 
         switch(target){
-            case "0":
+            case "commentBtnId_1":
                 writeCommentExpansionEvent()
                 break
-            case "1":
+            case "commentBtnId_2":
                 break
         }
     }
@@ -63,12 +63,12 @@ const CommentWrite=(props)=>{
                 isWriteCommentExpansion
                 ?
                 <React.Fragment>
-                    <WriteCommentInput  width="95%" height="23px" background_color="#181818" position="absolute" border="none" type="text"></WriteCommentInput>
+                    <WriteCommentInput  width="95%" height="24px" background_color="#181818" position="absolute" border="none" type="text"></WriteCommentInput>
                     <Div width="92%" height="40px" margin_left="60px" flex_style="flexSpaceBetween">
-                        <ImgBtn btn_style="commentMenuBtn" img_style="smallImg" data={commentBtnData[1]}/>
-                        <Div width="125px" height="40px" flex_style="flexSpaceBetween" onClick={commentMenuBtnEvent}>
-                        <TextBtn btn_style="CommentMenuBtn" p_style="smallP" data={commentBtnData[3]}/>
-                        <TextBtn btn_style="CommentMenuBtn" p_style="smallP" data={commentBtnData[4]}/>
+                        <ImgBtn id="commentBtnId_0" shape="circle" color="black" size="small" data={commentBtnData[1]}/>
+                        <Div width="120px" height="40px" flex_style="flexSpaceBetween" onClick={commentMenuBtnEvent}>
+                            <TextBtn id="commentBtnId_1" shape="round" color="gray" size="small" data={commentBtnData[3]}/>
+                            <TextBtn id="commentBtnId_2" shape="round" color="gray" size="small" data={commentBtnData[4]}/>
                         </Div>
                     </Div>
                 </React.Fragment>

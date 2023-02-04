@@ -9,20 +9,6 @@ import {Div} from "../../../styles/Div"
 import {CircleImg} from "../../../styles/Img"
 import {P} from "../../../styles/P"
 
-// const PopUpMenu= styled.div`
-   
-//     ${(p) => p.popUpMenuStyle}
-
-//     width="800px" height="500px" border_radius="20px" background_color="#3d3d3d" position="absolute" flex_direction="column" flex_style="flexRightCenter" 
-// `
-// profile : css`
-//         width : 300px;
-//         height : 200px;
-//         top :65px;
-//         right : 5px; 
-//     `
-//     }
-
 //======style======//
 
 const ProfilePopUpMenuDiv= styled(Div)`
@@ -39,7 +25,7 @@ const ProfilePopUpMenuHeaderDiv = styled(Div)`
 
 const ProfilePopUpMenu=()=>{
 
-    const BtnData=[
+    const btnData=[
         {   "id":"0",
             "img":"/img/profileSectionBtnIcon2.png"
         },
@@ -56,7 +42,7 @@ const ProfilePopUpMenu=()=>{
     return (
         <ProfilePopUpMenuDiv width="300px" height="200px"  border_radius="20px" background_color="#3d3d3d" position="absolute" flex_direction="column" flex_style="flexLeftCenter">
             <ProfilePopUpMenuHeaderDiv width="93%" height="200px" margin_top="10px" margin_bottom="16px" flex_style="flexCenter">
-                <CircleImg height="45px" src={BtnData[0].img}/>
+                <CircleImg height="45px" src={btnData[0].img}/>
                 <Div width="75%" hegiht="100%" margin_left="20px" flex_direction="column">
                     <P font_size="medium">
                         장승훈
@@ -67,8 +53,8 @@ const ProfilePopUpMenu=()=>{
                 </Div>
             </ProfilePopUpMenuHeaderDiv>
             <Div width="100%" margin_bottom="20px" flex_direction="column">
-            <ImgTextBtn btn_style="HeadPopUpMenu" img_style="mediumImg" p_style="mediumP" data={BtnData[1]}/>
-            <ImgTextBtn btn_style="HeadPopUpMenu" img_style="mediumImg" p_style="mediumP" data={BtnData[2]}/>
+            <ImgTextBtn id="profilePopUpMenuBtnId_0" shape="round" color="gray" size="small" flex_direction="row" flex_style="flexLeftCenter"  data={btnData[1]}/>
+            <ImgTextBtn id="profilePopUpMenuBtnId_1" shape="round" color="gray" size="small" flex_direction="row" flex_style="flexLeftCenter"  data={btnData[2]}/>
             </Div>
         </ProfilePopUpMenuDiv>
     )

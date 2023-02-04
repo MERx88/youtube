@@ -1,107 +1,113 @@
 import React from "react"
 
-import { css } from "styled-components"
+import styled , {css}from "styled-components"
 
-import {Button} from "../styles/Button"
-import {P} from "../styles/P"
+export const TextButton = styled.button`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    flex-direction: row;
+    padding :  15px;
 
+    width: ${(props) => 
+        props.shape == ("circle" ||"round")
+        ? props.size =="extraSmall" 
+            ? `25px`
+            : props.size =="small"
+            ? `30px`
+            : props.size =="medium"
+            ? `50px`
+            : props.size == "large"
+            ? `100px`
+            : `50px`
+        : `auto`
+    };
 
-const BTN_STYLE= {
+    height: 
+    ${(props) => 
+        props.size =="extraSmall"
+        ? `25px`
+        : props.size =="small"
+        ? `30px`
+        : props.size =="medium"
+        ? `50px`
+        : props.size == "large"
+        ? `100px`
+        : `50px`
+    };
 
-//======Comment Button======//
+    border-radius: 
+    ${(props) => 
+        props.shape == "round"
+        ? `1em`
+        : props.shape =="circle"
+        ? `50%`
+        : `none`
+    };
 
-    CommentMenuBtn : css`
-        width: 60px;
-        height: 35px;
-        border-radius: 19px;
-        background-color: #3d3d3d;
-    `,
+    background-color: 
+    ${(props) => 
+        props.color =="black"
+        ? `#181818`
+        : props.color =="darkGray"
+        ? `#212121`
+        : props.color =="gray"
+        ? `#3d3d3d`
+        : `#181818`
+    };
+    
+    &:hover {
+        background-color: ${(props) => 
+            props.color =="black"
+            ? `#3d3d3d`
+            : props.color =="darkGray"
+            ? `#6d6d6d`
+            : props.color =="gray"
+            ? `#6d6d6d`
+            : `none`
+        };
+`
 
-//======Recommand Video List Button======//
+export const P = styled.p`
+    width: fit-content;
+    height :fit-content;
+    pointer-events: none;
+    color : white;
 
-    RecommandVideoListSortBtn : css`
-        width: auto;
-        height: 40px;
-        border-radius: 10px;
-        background-color:#3d3d3d;
-    `
-}
+    margin-left:
+    ${(props) => 
+        props.flex_direction == (`row` || null)
+        ? "1em" 
+        : null 
+    };
 
-const P_STYLE= {
-
-    extraSmallP : css`
-        font-size: 10px;
-    `,
-    smallP : css`
-        font-size: 13px;
-    `,
-    mediumP : css`
-        font-size: 16px;
-    `,
-    largeP : css`
-        font-size: 19px;
-    `,
-    extraLargeP : css`
-        font-size: 22px;
-    `
-};
+    font-size: 
+    ${(props) => 
+        props.size =="small"
+        ? `12px`
+        : props.size =="medium"
+        ? `14px`
+        : props.size == "large"
+        ? `18px`
+        : `14px`
+    };
+`
 
 
 // ========================================== //
 
 const TextBtn=(props)=>{
-    const {btn_style, p_style, data} = props
-    const btnStyle = BTN_STYLE[btn_style];
-    const pStyle = P_STYLE[p_style];
+
+    const {id, shape, color, size, data, onClick} = props
+
  	return(
-        <Button id={data.id} btnStyle={btnStyle}>
-            <P pStyle={pStyle}>{data.txt}</P>
-        </Button>
+        <TextButton id={id} shape={shape} color={color} size={size} onClick={onClick}>
+            <P size={size}>{data.txt}</P>
+        </TextButton>
 	)
 }
 
 export default TextBtn
 
-// const ImgButton = styled.button`
-
-//     ${(p) => p.positionStyle}
-
-//     border: none;
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-//     cursor: pointer;
-// `
-
-// const POSITIONS = {
-//     CommentMenu : css`
-//         width: 60px;
-//         height: 35px;
-//         border-radius: 19px;
-//         background-color: #3d3d3d;
-//     `,
-//     RecommandVideoListSort : css`
-//         width: auto;
-//         height: 40px;
-//         border-radius: 10px;
-//         background-color:#3d3d3d ;
-//     `
-// };
-
-// // ========================================== //
-
-// const ButtonP = styled.p`
-
-//     ${(p) => p.imgPositionStyle}
-
-//     color: white;
-//     pointer-events: none;
-// `
-// const P_POSITIONS = {
-//     CommentMenu : css`
-//         font-size: 12px;
-//     `,
-//     RecommandVideoListSort : css`
-//         font-size: 15px;
-//     `
-// };

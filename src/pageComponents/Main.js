@@ -36,10 +36,10 @@ const Main=()=>{
     return (
         <React.Fragment>
         {
-            videoPageValue=="main" && 
+            videoPageValue=="video" && 
             <Video/> 
         }
-        {/* {
+        {
             videoPageValue=="main" && 
             <ContainerMain media={isNarrow}>
                 {mainStateValue=="home" && <Home/>}
@@ -47,7 +47,7 @@ const Main=()=>{
                 {mainStateValue=="subscribe" && <Subscribe/>}
                 {mainStateValue=="storage" && <Storage/>}    
             </ContainerMain>
-        } */}
+        }
         </React.Fragment>
     )
 }

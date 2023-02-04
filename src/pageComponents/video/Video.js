@@ -4,6 +4,7 @@ import {useSetRecoilState} from "recoil"
 
 //import component
 import VideoBtnInfo from "./VideoBtnInfo"
+import VideoInfoBox from "./VideoInfoBox"
 import RecommandVideoList from "./RecommandVideoList"
 import CommentList from "./CommentList"
 
@@ -169,6 +170,7 @@ const Video=()=>{
                         {videoData[0].videoTitle}
                     </H1>
                     <VideoBtnInfo/>
+                    <VideoInfoBox/>
                 </Div>
                 {/* {isNomal ? null : <RecommandVideoList/>} */}
                 <CommentList/>

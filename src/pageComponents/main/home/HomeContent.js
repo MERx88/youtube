@@ -120,8 +120,8 @@ const HomeContent=(props)=>{
                     isContentExpansion
                     ?
                     <Div width="100%" height="60px" flex_style="flexSpaceAround" onClick={contentExpansionBtnEvent}>
-                        <ImgTextBtn btn_style="homeContentExpansionBtn" img_style="smallImg" p_style="smallP" data={contentExpansionBtnData[0]}/>
-                        <ImgTextBtn btn_style="homeContentExpansionBtn" img_style="smallImg" p_style="smallP" data={contentExpansionBtnData[1]}/>
+                        <ImgTextBtn id="homeContentExpansionBtnId_0" shape="round" color="gray" size="small" flex_direction="row" flex_style="flexCenter"  data={contentExpansionBtnData[0]}/>
+                        <ImgTextBtn id="homeContentExpansionBtnId_1" shape="round" color="gray" size="small" flex_direction="row" flex_style="flexCenter"  data={contentExpansionBtnData[1]}/>
                     </Div>
                     :
                     null

@@ -71,25 +71,24 @@ const VideoBtnInfo=()=>{
         const target=event.target.id
 
         switch(target){
-            case "0":
-                
+            case "videoMenuBtnId_0":
                 break
-            case "1":
+            case "videoMenuBtnId_1":
                 likeEvent()
                 break
-            case "2":
+            case "videoMenuBtnId_2":
                 break
-            case "3":
+            case "videoMenuBtnId_3":
                 break
-            case "4":
+            case "videoMenuBtnId_4":
                 break
-            case "5":
+            case "videoMenuBtnId_5":
                 break
-            case "6":
+            case "videoMenuBtnId_6":
                 break
-            case "7":
+            case "videoMenuBtnId_7":
                 break
-            case "8":
+            case "videoMenuBtnId_8":
                 likeEvent()
                 break
         }
@@ -108,30 +107,17 @@ const VideoBtnInfo=()=>{
                             구독자 {videoDataValue[0]?.videoProfileSubscriber}
                         </P>
                     </Div>
-                    <ImgTextBtn btn_style="videoMenuBtn" img_style="smallImg" p_style="smallP" data={videoBtnData[0]}/>
+                    <ImgTextBtn id="videoMenuBtnId_0" shape="round" color="gray" size="small" flex_direction="row" flex_style="flexCenter"  data={videoBtnData[0]}/>
                 </Div>
                 <Div width="50%" flex_style="flexSpaceAround" media={isNomal}>
-                    <ImgBtn btn_style="videoMenuBtn" img_style="extraSmallImg" data={isLike ? videoBtnData[8] : videoBtnData[1]}/>
-                    <ImgBtn btn_style="videoMenuBtn" img_style="extraSmallImg" data={videoBtnData[2]}/>
-                    <ImgTextBtn btn_style="videoMenuBtn" img_style="smallImg" p_style="smallP" data={videoBtnData[3]}/>
-                    {isNomal ?<ImgTextBtn btn_style="videoMenuBtn" img_style="smallImg" p_style="smallP" data={videoBtnData[4]}/>: null}
-                    {isMaxWide ? <ImgTextBtn btn_style="videoMenuBtn" img_style="smallImg" p_style="smallP" data={videoBtnData[5]}/> : null}
-                    {isWide ?<ImgTextBtn btn_style="videoMenuBtn" img_style="smallImg" p_style="smallP" data={videoBtnData[6]}/> : null}
-                    <ImgBtn btn_style="videoMenuBtn" img_style="extraSmallImg" data={videoBtnData[7]}/>
+                    <ImgBtn id="videoMenuBtnId_1" shape="circle" color="gray" size="medium" data={isLike ? videoBtnData[8] : videoBtnData[1]}/>
+                    <ImgBtn id="videoMenuBtnId_2" shape="circle" color="gray" size="medium" data={videoBtnData[2]}/>
+                    <ImgTextBtn id="videoMenuBtnId_3" shape="round" color="gray" size="small" flex_direction="row" flex_style="flexCenter"  data={videoBtnData[3]}/>
+                    {isNomal ?<ImgTextBtn id="videoMenuBtnId_4" shape="round" color="gray" size="small" flex_direction="row" flex_style="flexCenter"  data={videoBtnData[4]}/>: null}
+                    {isMaxWide ? <ImgTextBtn id="videoMenuBtnId_5" shape="round" color="gray" size="small" flex_direction="row" flex_style="flexCenter"  data={videoBtnData[5]}/>: null}
+                    {isWide ?<ImgTextBtn id="videoMenuBtnId_6" shape="round" color="gray" size="small" flex_direction="row" flex_style="flexCenter"  data={videoBtnData[6]}/> : null}
+                    <ImgBtn id="videoMenuBtnId_7" shape="circle" color="gray" size="medium" data={videoBtnData[7]}/>
                 </Div>
-            </Div>
-            <Div  height="100px" margin_top="10px" border_radius="15px" background_color="#3d3d3d" flex_direction="column" >
-                <Div margin_top="20px" margin_bottom="5px" margin_left="20px">
-                    <P color="white" font_size="medium">
-                        {videoDataValue[0]?.videoView}
-                    </P>
-                    <P color="white" font_size="medium" margin_left="5px">
-                        {videoDataValue[0]?.videotUploadDate}
-                    </P>
-                </Div>
-                <P color="white" font_size="medium" margin_left="20px">
-                    {videoDataValue[0]?.videoInfo}
-                </P>
             </Div>
         </React.Fragment>
     )

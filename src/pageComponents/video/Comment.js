@@ -37,8 +37,8 @@ const Comment=(props)=>{
                     {commentDataValue[index].commentTxt}
                 </P>
                 <Div width="90px" margin_top="5px" flex_style="flexSpaceAround">
-                    <ImgBtn btn_style="commentMenuBtn" img_style="mediumImg" data={commentBtnData[1]}/>
-                    <ImgBtn btn_style="commentMenuBtn" img_style="mediumImg" data={commentBtnData[2]}/>
+                    <ImgBtn id="commentBtnId_0" shape="circle" color="black" size="small" data={commentBtnData[1]}/>
+                    <ImgBtn id="commentBtnId_1" shape="circle" color="black" size="small" data={commentBtnData[2]}/>
                 </Div>
             </Div>
         </Div>

@@ -12,8 +12,10 @@ export const ImgButton = styled.button`
 
     width: ${(props) => 
         props.shape == ("circle" ||"round")
-        ? props.size =="small" 
+        ? props.size =="extraSmall" 
             ? `25px`
+            : props.size =="small"
+            ? `30px`
             : props.size =="medium"
             ? `50px`
             : props.size == "large"
@@ -24,8 +26,10 @@ export const ImgButton = styled.button`
 
     height: 
     ${(props) => 
-        props.size =="small"
+        props.size =="extraSmall"
         ? `25px`
+        : props.size =="small"
+        ? `30px`
         : props.size =="medium"
         ? `50px`
         : props.size == "large"
@@ -70,8 +74,10 @@ export const Img = styled.img`
 
     height: 
     ${(props) => 
-        props.size =="small"
+        props.size =="extraSmall"
         ? `10px`
+        : props.size =="small"
+        ? `15px`
         : props.size =="medium"
         ? `22px`
         : props.size == "large"

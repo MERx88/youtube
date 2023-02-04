@@ -6,7 +6,7 @@ export const ImgTextButton = styled.button`
     display: flex;
     border: none;
     cursor: pointer;
-    padding : 10%;
+    padding :  15px;
 
     flex-direction: ${(props) => props.flex_direction || `row`};
 
@@ -15,8 +15,10 @@ export const ImgTextButton = styled.button`
     width: 
     ${(props) => 
         props.shape == "circle"
-        ? props.size =="small" 
+        ? props.size =="extraSmall" 
             ? `30px`
+            : props.size =="small"
+            ? `50px`
             : props.size =="medium"
             ? `80px`
             : props.size == "large"
@@ -27,8 +29,10 @@ export const ImgTextButton = styled.button`
 
     height: 
     ${(props) => 
-        props.size =="small"
+        props.size =="extraSmall"
         ? `30px`
+        : props.size =="small"
+        ? `50px`
         : props.size =="medium"
         ? `80px`
         : props.size == "large"

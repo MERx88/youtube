@@ -40,8 +40,8 @@ const RecommandVideoList=()=>{
         <Div width="400px" flex_direction="column" margin_top="100px"  margin_right="30px">
             <Div  width="100%" height="50px" margin_top="10px" flex_style="flexSpaceAround"  media={isNomal}>
                 {
-                    RecommandVideoListSortBtnData.map((value)=>{
-                        return <TextBtn btn_style="RecommandVideoListSortBtn" p_style="mediumP" data={value}/>
+                    RecommandVideoListSortBtnData.map((value, index)=>{
+                        return <TextBtn id={index} shape="round" color="gray" size="small" data={value}/>
                     })
                 }
             </Div>

@@ -43,7 +43,7 @@ const CommentList=()=>{
         <Div width="100%" margin_top="15px" margin_right="10px" margin_left="10px"  flex_direction="column" >
             <Div  width="150px" flex_style="flexSpaceAround">
                 <H1 color="#b1b1b1" font_size="small">댓글</H1>
-                <ImgTextBtn btn_style="CommentListSortBtn" img_style="extraSmallImg" p_style="smallP" data={commentBtnData[0]}/>
+                <ImgTextBtn id="commentSortBtnId_0" shape="round" color="black" size="small" flex_direction="row" flex_style="flexCenter"  data={commentBtnData[0]}/>
             </Div>
             <CommentWrite commentBtnData={commentBtnData}/>
             <Div  width="100%" flex_direction="column">
