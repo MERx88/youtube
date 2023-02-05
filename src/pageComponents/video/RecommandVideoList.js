@@ -11,13 +11,11 @@ import {RecommandVideoDataState} from "../../recoil/VideoState"
 
 //import style 
 import {Div} from "../../styles/Div"
-import {useNomal} from "../../hooks/useMedia"
+import {Tablet,Pc} from "../../styles/MediaQuery"
 
 //======Component======//
 
 const RecommandVideoList=()=>{
-    //mediaquery
-    let isNomal=useNomal()
     //staticData
     const RecommandVideoListSortBtnData=[
         {   "id":"0",
@@ -37,8 +35,11 @@ const RecommandVideoList=()=>{
     const recommandVideoDataValue=useRecoilValue(RecommandVideoDataState)
 
     return (
+        <React.Fragment>
+        {/* ======Pc====== */}
+        <Pc>
         <Div width="400px" flex_direction="column" margin_top="100px"  margin_right="30px">
-            <Div  width="100%" height="50px" margin_top="10px" flex_style="flexSpaceAround"  media={isNomal}>
+            <Div  width="100%" height="50px" margin_top="10px" flex_style="flexSpaceAround">
                 {
                     RecommandVideoListSortBtnData.map((value, index)=>{
                         return <TextBtn id={index} shape="round" color="gray" size="small" data={value}/>
@@ -53,6 +54,27 @@ const RecommandVideoList=()=>{
             } 
             </Div>
         </Div>
+        </Pc>
+        {/* ======Tablet====== */}
+        <Tablet>
+        <Div width="100%" flex_direction="column" margin_top="20px"  margin_right="30px">
+            <Div  width="100%" height="50px" margin_top="10px" flex_style="flexSpaceAround">
+                {
+                    RecommandVideoListSortBtnData.map((value, index)=>{
+                        return <TextBtn id={index} shape="round" color="gray" size="small" data={value}/>
+                    })
+                }
+            </Div>
+            <Div width="100%" margin_top="5px" flex_direction="column" >
+            {
+                recommandVideoDataValue.map((data,index)=>{
+                return <RecommandVideo key={data} index={index}/>
+                })
+            } 
+            </Div>
+        </Div>
+        </Tablet>
+        </React.Fragment>
     )
 }
 

@@ -1,6 +1,6 @@
 import React, {useEffect} from "react"
 import styled from "styled-components"
-import {useSetRecoilState} from "recoil"
+import {useSetRecoilState, useRecoilValue} from "recoil"
 
 //import component
 import VideoBtnBox from "./VideoBtnBox"
@@ -11,30 +11,16 @@ import CommentList from "./CommentList"
 //import style'
 import {Div} from "../../styles/Div"
 import {H1} from "../../styles/H1"
-import {useNomal} from "../../hooks/useMedia"
+import {Tablet,Pc} from "../../styles/MediaQuery"
 
 //import recoil state 
-import {VideoDataState, CommentDataState, RecommandVideoDataState} from "../../recoil/VideoState"
+import {CommentDataState, RecommandVideoDataState} from "../../recoil/VideoState"
+import {ContentDataState, videoDataIndexState} from "../../recoil/HomeState"
 
 //======Component======//
 
 const Video=()=>{
-    //mediaquery
-    let isNomal=useNomal()
      //dynamicData
-    const videoData=[
-        {   "id":"0",
-            "video":"/video/video0.mov",
-            "videoTitle":"아이템 자랑하기 - 고멤마을 프리터 시점",
-            "profileImg":"/img/contentProfileImg0.png",
-            "videoProfileName":"프리터",
-            "videoProfileSubscriber":"102만명",
-            "videoView":"조회수 40만회",
-            "videotUploadDate":"2시간전",
-            "videoInfo":"어렵고 딱딱한 경제,시사,금융 이야기를 쉽고 유쾌하게 풀어내는 경제/시사/이슈/잡썰 토크방송입니다.",
-            "videoRecommend":"111"
-        }
-    ]
     const commentData=[
         {   "id":"0",
             "ProfilImg":"/img/contentProfileImg1.png",
@@ -149,35 +135,57 @@ const Video=()=>{
         }
     ]
     //recoilState
-    const setVideoDataState=useSetRecoilState(VideoDataState)
     const setCommentDataState=useSetRecoilState(CommentDataState)
     const setRecommandVideoDataState=useSetRecoilState(RecommandVideoDataState)
+    const contentDataValue=useRecoilValue(ContentDataState)
+    const videoDataIndexValue=useRecoilValue(videoDataIndexState)
     
     useEffect(() => {
-        setVideoDataState(videoData)
         setCommentDataState(commentData)
         setRecommandVideoDataState(recommandVideoData)
     },[])
 
     return (
-        <Div width="100%" margin_left="20px" flex_style="flexTopCenter">
-            <Div width="70%" margin_top="100px" margin_right="20px" flex_direction="column">
-                <Div width="100%" flex_direction="column">
-                    <video  width="100%" autoplay controls>
-                        <source src={videoData[0].video} type="video/mp4"/>
-                    </video>
-                    <H1 font_size="large" margin_top="10px">
-                        {videoData[0].videoTitle}
-                    </H1>
-                    <VideoBtnBox/>
-                    <VideoInfoBox/>
+        <React.Fragment>
+        {/* ======Pc====== */}
+        <Pc>
+            <Div width="100%" margin_left="20px" flex_style="flexTopCenter">
+                <Div width="70%" margin_top="100px" margin_right="20px" flex_direction="column">
+                    <Div width="100%" flex_direction="column">
+                        <video  width="100%" autoplay controls poster={contentDataValue[videoDataIndexValue].contentThumbnail}>
+                            <source src={contentDataValue[videoDataIndexValue].contentVideo} type="video/mp4"/>
+                        </video>
+                        <H1 font_size="large" margin_top="10px">
+                            {contentDataValue[videoDataIndexValue].contentTitle}
+                        </H1>
+                        <VideoBtnBox/>
+                        <VideoInfoBox/>
+                    </Div>
+                    <CommentList/>
                 </Div>
-                {/* {isNomal ? null : <RecommandVideoList/>} */}
-                <CommentList/>
+                <RecommandVideoList/>
             </Div>
-            <RecommandVideoList/>
-            {/* {isNomal ? <RecommandVideoList/> : null} */}
-        </Div>
+        </Pc>
+        {/* ======Tablet====== */}
+        <Tablet>
+             <Div width="100%" margin_left="20px" flex_style="flexTopCenter">
+                <Div width="100%" margin_top="100px" margin_right="20px" flex_direction="column">
+                    <Div width="100%" flex_direction="column">
+                        <video  width="100%" autoplay controls poster={contentDataValue[videoDataIndexValue].contentThumbnail}>
+                            <source src={contentDataValue[videoDataIndexValue].contentVideo} type="video/mp4"/>
+                        </video>
+                        <H1 font_size="large" margin_top="10px">
+                            {contentDataValue[videoDataIndexValue].contentTitle}
+                        </H1>
+                        <VideoBtnBox/>
+                        <VideoInfoBox/>
+                    </Div>
+                    <RecommandVideoList/>
+                    <CommentList/>
+                </Div>
+            </Div>
+        </Tablet>
+        </React.Fragment>
     )
 }
 

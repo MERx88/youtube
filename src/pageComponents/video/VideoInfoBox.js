@@ -3,24 +3,20 @@ import styled from "styled-components"
 import {useRecoilValue} from "recoil"
 
 //import recoil state 
-import {VideoDataState} from "../../recoil/VideoState"
+import {ContentDataState, videoDataIndexState} from "../../recoil/HomeState"
 
 //import style 
 import {Div} from "../../styles/Div"
 import {P} from "../../styles/P"
-import {useMaxWide, useWide, useNomal} from "../../hooks/useMedia"
 
 //======Component======//
 
 const VideoInfoBox=()=>{
-    //mediaquery
-    let isMaxWide=useMaxWide()
-    let isWide=useWide()
-    let isNomal=useNomal()
     //state
     const [isInfoBoxExpansion,setIsInfoBoxExpansion]=React.useState(false)
     //recoilState
-    const videoDataValue=useRecoilValue(VideoDataState)
+    const contentDataValue=useRecoilValue(ContentDataState)
+    const videoDataIndexValue=useRecoilValue(videoDataIndexState)
     //event
     const infoBoxEvent=()=>{
         isInfoBoxExpansion ? setIsInfoBoxExpansion(false) :  setIsInfoBoxExpansion(true)
@@ -30,14 +26,14 @@ const VideoInfoBox=()=>{
         <Div  height={ isInfoBoxExpansion ? "auto" : "100px"} margin_top="10px"  border_radius="15px" background_color="#3d3d3d" flex_direction="column" onClick={infoBoxEvent}>
             <Div margin_top="20px" margin_bottom="5px" margin_left="20px">
                 <P font_size="medium">
-                    {videoDataValue[0]?.videoView}
+                    {contentDataValue[videoDataIndexValue].contentView}
                 </P>
                 <P font_size="medium" margin_left="5px">
-                    {videoDataValue[0]?.videotUploadDate}
+                    {contentDataValue[videoDataIndexValue].contentUploadDate}
                 </P>
             </Div>
             <P font_size="medium" margin_left="20px" margin_bottom="20px">
-                {videoDataValue[0]?.videoInfo}
+                {contentDataValue[videoDataIndexValue].contentInfo}
             </P>
         </Div>
     )

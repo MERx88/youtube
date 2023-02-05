@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import {useRecoilValue, useSetRecoilState, useRecoilState} from "recoil"
+import {useRecoilValue, useSetRecoilState,useRecoilState} from "recoil"
 
 //import component
 import ImgTextBtn from "../../components/ImgTextBtn"
@@ -11,7 +11,7 @@ import {videoPageState} from "../../recoil/HomeState"
 
 //import style 
 import {Div} from "../../styles/Div"
-import {useNarrow} from "../../hooks/useMedia"
+import {Tablet,Pc} from "../../styles/MediaQuery"
 
 //======style======//
 
@@ -22,8 +22,6 @@ const NavDetailDiv = styled(Div)`
 //======Component======//
 
 const Nav=()=>{
-    //mediaquery
-    let isNarrow=useNarrow()
     //staticData
     const navIconData=[
         {   "id":"0",
@@ -46,7 +44,8 @@ const Nav=()=>{
     //recoilState
     const sideMenuOpenValue = useRecoilValue(sideMenuOpenState)
     const setMainState = useSetRecoilState(mainState)
-    const videoPageValue = useRecoilValue(videoPageState)
+    const [videoPageValue, setVideoPageState]=useRecoilState(videoPageState)
+
     //event
     const sideMenuBtnEvent=()=>{
 
@@ -54,15 +53,19 @@ const Nav=()=>{
     
         switch(target){
             case "0":
+                setVideoPageState("main") 
                 setMainState("home")
                 break
             case "1":
+                setVideoPageState("main") 
                 setMainState("shorts")
                 break
             case "2":
+                setVideoPageState("main") 
                 setMainState("subscribe")
                 break
             case "3":
+                setVideoPageState("main")
                 setMainState("storage")
                 break
         }
@@ -71,7 +74,7 @@ const Nav=()=>{
     return (
         sideMenuOpenValue
         ?   
-            <NavDetailDiv width="240px" height="1500px" margin_top="83px" flex_direction="column" position="fixed" background_color="#181818" onClick={sideMenuBtnEvent}>
+            <NavDetailDiv width="240px" height="1500px" margin_top="70px" flex_direction="column" position="fixed" background_color="#181818" onClick={sideMenuBtnEvent}>
             {
                 navIconData.map((value, index)=>{
                     return <ImgTextBtn id={index} shape="round" color="black" size="small" flex_direction="row" flex_style="flexLeftCenter" data={value}/>
@@ -79,9 +82,9 @@ const Nav=()=>{
             }  
             </NavDetailDiv>
         :
-            isNarrow
-            &&
-            <React.Fragment>
+        <React.Fragment>
+            {/* ======Pc====== */}
+            <Pc>
                 {
                     videoPageValue =="video" && null
                 }
@@ -95,7 +98,12 @@ const Nav=()=>{
                             }  
                         </Div>
                 }
-            </React.Fragment>
+            </Pc>
+            {/* ======Tablet====== */}
+            <Tablet>
+                {null}
+            </Tablet>
+        </React.Fragment>
     )
 }
 

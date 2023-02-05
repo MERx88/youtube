@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import {useMediaQuery } from "react-responsive"
 import {useRecoilValue} from "recoil"
 
 //import component
@@ -7,21 +8,26 @@ import ImgBtn from "../../components/ImgBtn"
 import ImgTextBtn from "../../components/ImgTextBtn"
 
 //import recoil state 
-import {VideoDataState} from "../../recoil/VideoState"
+import {ContentDataState, videoDataIndexState} from "../../recoil/HomeState"
 
 //import style 
 import {Div} from "../../styles/Div"
 import {CircleImg} from "../../styles/Img"
 import {P} from "../../styles/P"
-import {useMaxWide, useWide, useNomal} from "../../hooks/useMedia"
 
 //======Component======//
 
 const VideoBtnBox=()=>{
     //mediaquery
-    let isMaxWide=useMaxWide()
-    let isWide=useWide()
-    let isNomal=useNomal()
+    const isMaxWide = useMediaQuery({
+        query : "(min-width:1400px)"
+    });
+    const isWide = useMediaQuery({
+        query : "(min-width:1200px)"
+    });
+    const isNomal = useMediaQuery({
+        query : "(min-width:1000px)"
+    });
     //staticData
     const videoBtnData=[
         {   "id":"0",
@@ -60,7 +66,8 @@ const VideoBtnBox=()=>{
     //state
     const [isLike,setIsLike]=React.useState(false)
     //recoilState
-    const videoDataValue=useRecoilValue(VideoDataState)
+    const contentDataValue=useRecoilValue(ContentDataState)
+    const videoDataIndexValue=useRecoilValue(videoDataIndexState)
     //event
     const likeEvent=()=>{
         isLike ? setIsLike(false) :  setIsLike(true)
@@ -97,14 +104,14 @@ const VideoBtnBox=()=>{
     return (
         <React.Fragment>
             <Div height="50px" margin_top="10px" flex_style="flexSpaceBetween" onClick={profileMenuBtnEvent}>
-                <Div width="250px" height="100%"  margin_top="10px" flex_style="flexSpaceAround">
-                    <CircleImg height="45px" src={videoDataValue[0]?.profileImg}/>
-                    <Div height="100%"  margin_top="10px" margin_left="5px"  flex_direction="column">
+                <Div  height="100%"  margin_top="10px" flex_style="flexSpaceAround">
+                    <CircleImg height="45px" src={contentDataValue[videoDataIndexValue].profileImg}/>
+                    <Div height="100%"  margin_top="10px" margin_left="10px" margin_right="10px" flex_direction="column">
                         <P font_size="extraLarge" font_weight="bold" >
-                            {videoDataValue[0]?.videoProfileName}
+                            {contentDataValue[videoDataIndexValue].channelTitle}
                         </P>
                         <P color="gray" font_size="small">
-                            구독자 {videoDataValue[0]?.videoProfileSubscriber}
+                            구독자 {contentDataValue[videoDataIndexValue].channelSubscriber}
                         </P>
                     </Div>
                     <ImgTextBtn id="videoMenuBtnId_0" shape="round" color="gray" size="small" flex_direction="row" flex_style="flexCenter"  data={videoBtnData[0]}/>
@@ -113,7 +120,7 @@ const VideoBtnBox=()=>{
                     <ImgBtn id="videoMenuBtnId_1" shape="circle" color="gray" size="medium" data={isLike ? videoBtnData[8] : videoBtnData[1]}/>
                     <ImgBtn id="videoMenuBtnId_2" shape="circle" color="gray" size="medium" data={videoBtnData[2]}/>
                     <ImgTextBtn id="videoMenuBtnId_3" shape="round" color="gray" size="small" flex_direction="row" flex_style="flexCenter"  data={videoBtnData[3]}/>
-                    {isNomal ?<ImgTextBtn id="videoMenuBtnId_4" shape="round" color="gray" size="small" flex_direction="row" flex_style="flexCenter"  data={videoBtnData[4]}/>: null}
+                    <ImgTextBtn id="videoMenuBtnId_4" shape="round" color="gray" size="small" flex_direction="row" flex_style="flexCenter"  data={videoBtnData[4]}/>
                     {isMaxWide ? <ImgTextBtn id="videoMenuBtnId_5" shape="round" color="gray" size="small" flex_direction="row" flex_style="flexCenter"  data={videoBtnData[5]}/>: null}
                     {isWide ?<ImgTextBtn id="videoMenuBtnId_6" shape="round" color="gray" size="small" flex_direction="row" flex_style="flexCenter"  data={videoBtnData[6]}/> : null}
                     <ImgBtn id="videoMenuBtnId_7" shape="circle" color="gray" size="medium" data={videoBtnData[7]}/>

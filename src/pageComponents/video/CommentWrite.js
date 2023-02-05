@@ -6,9 +6,6 @@ import {useRecoilValue} from "recoil"
 import ImgBtn from "../../components/ImgBtn"
 import TextBtn from "../../components/TextBtn"
 
-//import recoil state 
-import {VideoDataState} from "../../recoil/VideoState"
-
 //import style 
 import {Div} from "../../styles/Div"
 import {Input} from "../../styles/Input"
@@ -31,8 +28,6 @@ const CommentWrite=(props)=>{
     const {commentBtnData}=props
     //state
     const [isWriteCommentExpansion,setIsWriteCommentExpansion]=React.useState(false)
-     //recoilState
-    const videoDataValue=useRecoilValue(VideoDataState)
     //event
     const writeCommentExpansionEvent=()=>{
         isWriteCommentExpansion ? setIsWriteCommentExpansion(false) :  setIsWriteCommentExpansion(true)
@@ -54,7 +49,7 @@ const CommentWrite=(props)=>{
     return (
         <Div width="98%" height="80px" margin_top="5px" flex_direction="column"  position="relative" >
             <Div width="100%" height="80px" flex_style="flexLeftCenter">
-                <CircleImg height="45px" src={videoDataValue[0]?.profileImg}/>
+                <CircleImg height="45px" src="/img/contentProfileImg1.png"/>
                 <CommentClickBeforeDiv  width="100%" height="20px" margin_bottom="5px" margin_left="13px" flex_style="flexLeftCenter">
                 <P color="gray" font_size="large" onClick={writeCommentExpansionEvent}>댓글추가...</P>
                 </CommentClickBeforeDiv>

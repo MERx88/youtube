@@ -45,3 +45,19 @@ export const useMaxNarrow=()=>{
     return isMaxNarrow
 }
 
+// import React from "react"
+// import { useMediaQuery } from "react-responsive"
+
+// export const Tablet = ({ children }) => {
+//   const isTablet = useMediaQuery({
+//     query: "(max-width:999px)"
+//   });
+//   return <>{isTablet && children}</>
+// }
+
+// export const Pc = ({ children }) => {
+//   const isPc = useMediaQuery({
+//     query: "(min-width:1000px)"
+//   });
+//   return <>{isPc && children}</>
+// }

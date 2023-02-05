@@ -14,7 +14,7 @@ import {mainState} from "../recoil/HeaderNavState"
 import {videoPageState} from "../recoil/HomeState"
 
 //import style 
-import {useNarrow} from "../hooks/useMedia"
+import {Tablet,Pc} from "../styles/MediaQuery"
 
 //======style======//
 
@@ -22,13 +22,17 @@ const ContainerMain= styled.main`
     max-width: 100%;
     padding-top: 140px;
     padding-right: 40px;
-    padding-left : ${(props) => props.media ? `130px` :`40px`};
+    padding-left : 40px;
+`
+const PaddingMain= styled.main`
+    max-width: 100%;
+    padding-top: 140px;
+    padding-right: 40px;
+    padding-left : 130px;
 `
 //======Component======//
 
 const Main=()=>{
-    //mediaquery
-    let isNarrow=useNarrow()
     //state
     const mainStateValue = useRecoilValue(mainState)
     const videoPageValue = useRecoilValue(videoPageState)
@@ -40,13 +44,27 @@ const Main=()=>{
             <Video/> 
         }
         {
-            videoPageValue=="main" && 
-            <ContainerMain media={isNarrow}>
-                {mainStateValue=="home" && <Home/>}
-                {mainStateValue=="shorts" && <Shorts/>}
-                {mainStateValue=="subscribe" && <Subscribe/>}
-                {mainStateValue=="storage" && <Storage/>}    
-            </ContainerMain>
+            videoPageValue=="main" &&
+            <React.Fragment>
+            {/* ======Pc====== */}
+            <Pc>
+                <PaddingMain>
+                    {mainStateValue=="home" && <Home/>}
+                    {mainStateValue=="shorts" && <Shorts/>}
+                    {mainStateValue=="subscribe" && <Subscribe/>}
+                    {mainStateValue=="storage" && <Storage/>}
+                </PaddingMain>
+            </Pc>
+            {/* ======Tablet====== */}
+            <Tablet>
+                <ContainerMain>
+                    {mainStateValue=="home" && <Home/>}
+                    {mainStateValue=="shorts" && <Shorts/>}
+                    {mainStateValue=="subscribe" && <Subscribe/>}
+                    {mainStateValue=="storage" && <Storage/>} 
+                </ContainerMain>   
+            </Tablet>
+            </React.Fragment>
         }
         </React.Fragment>
     )

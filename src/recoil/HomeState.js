@@ -16,10 +16,22 @@ export const popUpMenuState = atom({
     "default": null
 })
 
-//삭제해야할 스테이트
+//콘텐츠 인덱스 저장
+//contents index
+//HomeContent.js/video.js/videoBtnBox.js/videoInfoBox.js/
+export const videoDataIndexState = atom({
+    "key":"videoDataIndexState",
+    "default": null
+})
+
+//비디오 페이지 전환
+//video/main
+//HomeContent.js/header.js/nav.js/
 export const videoPageState = atom({
     "key":"videoPageState",
     "default":"main"
 })
+
+
 
 

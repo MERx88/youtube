@@ -11,13 +11,13 @@ import ImgBtn from "../../components/ImgBtn"
 
 //import recoil state 
 import {sideMenuOpenState, mainState} from "../../recoil/HeaderNavState"
-import {popUpMenuState} from "../../recoil/HomeState"
+import {videoPageState, popUpMenuState} from "../../recoil/HomeState"
 
 //import style 
 import {Div, AbsoluteDiv} from "../../styles/Div"
 import {Img,CircleImg} from "../../styles/Img"
 import {Input} from "../../styles/Input"
-import {useMaxNarrow} from "../../hooks/useMedia"
+import {Tablet,Pc} from "../../styles/MediaQuery"
 
 //======style======//
 
@@ -30,8 +30,6 @@ const HeadMenuBtnContainerDiv = styled(Div)`
 //======Component======//
 
 const Header=()=>{
-    //mediaquery
-    let isMaxNarrow=useMaxNarrow()
     //staticData
     const headerBtnData=[
         {  
@@ -80,6 +78,7 @@ const Header=()=>{
     const [sideMenuOpenValue, setSideMenuOpenState]=useRecoilState(sideMenuOpenState)
     const [popUpMenuValue, setPopUpMenuState]=useRecoilState(popUpMenuState)
     const setMainState = useSetRecoilState(mainState)
+    const setVideoPageState=useSetRecoilState(videoPageState)
     
     //event
     const isSideMenuOpen=()=>{
@@ -95,6 +94,7 @@ const Header=()=>{
                 isSideMenuOpen()
                 break
             case "headerBtnId_1":
+                setVideoPageState("main") 
                 setMainState("home")
                 break
             case "headerBtnId_2":
@@ -116,6 +116,8 @@ const Header=()=>{
 
     return (
     <React.Fragment>
+    {/* ======Pc====== */}
+    <Pc>
         <HeaderDiv width="100%" height="70px" background_color="#181818" position="fixed" flex_style="flexSpaceBetween" onClick={headMenuBtnEvent}>
             <HeadMenuBtnContainerDiv width="200px" margin_left="8px" flex_style="flexSpaceAround">
                 <ImgBtn id="headerBtnId_0" shape="circle" color="black" size="medium" data={headerBtnData[0]}/>
@@ -142,12 +144,45 @@ const Header=()=>{
                     <ImgBtn id="headerBtnId_5" shape="circle" color="black" size="medium" data={popUpMenuValue=="alarm" ? headerBtnData[8]:headerBtnData[7]}/>
                     {popUpMenuValue=="alarm" && <AlarmPopUpMenu/>}
                 </Div>
+                <Div id="headerBtnId_6" position="relative" flex_style="flexRightCenter">
+                    <CircleImg  width="40px" src={headerBtnData[9].img}/> 
+                    {popUpMenuValue=="profile" && <ProfilePopUpMenu/>}
+                </Div>
+            </HeadMenuBtnContainerDiv>
+        </HeaderDiv>
+    </Pc>
+    {/* ======Tablet====== */}
+    <Tablet>
+        <HeaderDiv width="100%" height="70px" background_color="#181818" position="fixed" flex_style="flexSpaceBetween" onClick={headMenuBtnEvent}>
+            <HeadMenuBtnContainerDiv width="200px" margin_left="8px" flex_style="flexSpaceAround">
+                <ImgBtn id="headerBtnId_0" shape="circle" color="black" size="medium" data={headerBtnData[0]}/>
+                <ImgBtn id="headerBtnId_1" shape="round" color="black" size="medium" data={headerBtnData[1]}/>
+            </HeadMenuBtnContainerDiv>
+            
+            <Div width="50%" flex_style="flexCenter" position="relative">
+                <Div id="headerBtnId_2" width="50px" height="40px" margin_right="20px" background_color="#3d3d3d" flex_style="flexCenter">
+                    <Img height="19px" src={headerBtnData[2].img}/>
+                </Div>
+                <ImgBtn id="headerBtnId_3" shape="circle" color="darkGray" size="medium" data={popUpMenuValue=="mic" ? headerBtnData[4] :headerBtnData[3]}/>
+                {popUpMenuValue=="mic" && <MicPopUpMenu/>}
+            </Div>
+
+            <HeadMenuBtnContainerDiv width="200px" flex_style="flexSpaceAround">
                 <Div position="relative" flex_style="flexRightCenter">
+                    <ImgBtn id="headerBtnId_4" shape="circle" color="black" size="medium" data={popUpMenuValue=="streaming" ? headerBtnData[6] : headerBtnData[5]}/>
+                    {popUpMenuValue=="streaming" && <StreamingPopUpMenu/>}
+                </Div>
+                <Div position="relative" flex_style="flexRightCenter">
+                    <ImgBtn id="headerBtnId_5" shape="circle" color="black" size="medium" data={popUpMenuValue=="alarm" ? headerBtnData[8]:headerBtnData[7]}/>
+                    {popUpMenuValue=="alarm" && <AlarmPopUpMenu/>}
+                </Div>
+                <Div id="headerBtnId_6" position="relative" flex_style="flexRightCenter">
                     <CircleImg width="40px" src={headerBtnData[9].img}/> 
                     {popUpMenuValue=="profile" && <ProfilePopUpMenu/>}
                 </Div>
             </HeadMenuBtnContainerDiv>
         </HeaderDiv>
+    </Tablet>
     </React.Fragment>
     )
 }

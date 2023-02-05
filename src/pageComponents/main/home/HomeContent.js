@@ -1,13 +1,13 @@
 import React from "react"
 import styled, { css } from "styled-components"
-import {useRecoilValue, useSetRecoilState} from "recoil"
+import {useRecoilValue,useSetRecoilState} from "recoil"
 
 //import component
 import ImgTextBtn from "../../../components/ImgTextBtn"
 
 //import recoil state 
 import {ContentDataState} from "../../../recoil/HomeState"
-import {videoPageState} from "../../../recoil/HomeState"
+import {videoPageState, videoDataIndexState} from "../../../recoil/HomeState"
 
 //import style 
 import {Div,CusorDiv,NoneEventsDiv} from "../../../styles/Div"
@@ -53,14 +53,26 @@ const CONTENT_STYLE = {
 //======Component======//
 
 const HomeContent=(props)=>{
+    //staticData
+    const contentExpansionBtnData=[
+        {   "id":"0",
+            "img":"/img/playlist.png",
+            "txt":"나중에 볼 동영상"
+        },
+        {   "id":"1",
+            "img":"/img/playlist.png",
+            "txt":"현재 재생목록에 추가"
+        }
+    ]
     //props
-    const {index, contentExpansionBtnData}=props
+    const {index}=props
     //state
     const [isMouseOver,setIsMouseOver]=React.useState(false)
     const [isContentExpansion,setIsContentExpansion]=React.useState(false)
     //recoilState
     const setVideoPageState=useSetRecoilState(videoPageState)
     const contentDataValue=useRecoilValue(ContentDataState)
+    const setVideoDataIndexState=useSetRecoilState(videoDataIndexState)
     //event
     const contentMouseOverInfoEvent=()=>{
         isMouseOver ? setIsMouseOver(false) :  setIsMouseOver(true)
@@ -76,6 +88,7 @@ const HomeContent=(props)=>{
         switch(target){
             case "homeContentExpansionBtnId_0":
                 setVideoPageState("video") 
+                setVideoDataIndexState(index)
                 break
             case "homeContentExpansionBtnId_1":
                 break
